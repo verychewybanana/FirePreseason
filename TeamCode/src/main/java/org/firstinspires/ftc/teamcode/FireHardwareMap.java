@@ -22,15 +22,15 @@ public class FireHardwareMap {
     // create slide motors
     public DcMotor slideLeftMotor = null;
     public DcMotor slideRightMotor = null;
-    public DcMotor actuatorMotor = null;
+//    public DcMotor actuatorMotor = null;
 
     //create mechanism servos
-    public DcMotor intakeMotor = null;
+//    public DcMotor intakeMotor = null;
     public Servo boxLeftServo = null;
     public Servo boxRightServo = null;
-    public Servo doorServo = null;
-    public Servo separatorServo = null;
-    public Servo hookServo = null;
+//    public Servo doorServo = null;
+//    public Servo separatorServo = null;
+//    public Servo hookServo = null;
 
     public RevBlinkinLedDriver led = null;
 
@@ -56,8 +56,8 @@ public class FireHardwareMap {
         frontLeftMotor = HardwareMap.get(DcMotor.class, "frontLeftMotor");
         backRightMotor = HardwareMap.get(DcMotor.class, "backRightMotor");
         backLeftMotor = HardwareMap.get(DcMotor.class, "backLeftMotor");
-        intakeMotor = HardwareMap.get(DcMotor.class, "intakeMotor");
-        actuatorMotor = HardwareMap.get(DcMotor.class, "actuatorMotor");
+//        intakeMotor = HardwareMap.get(DcMotor.class, "intakeMotor");
+//        actuatorMotor = HardwareMap.get(DcMotor.class, "actuatorMotor");
         slideLeftMotor = HardwareMap.get(DcMotor.class, "slideLeftMotor");
         slideRightMotor = HardwareMap.get(DcMotor.class, "slideRightMotor");
         led = HardwareMap.get(RevBlinkinLedDriver.class, "led");
@@ -65,34 +65,34 @@ public class FireHardwareMap {
         //Making servo
         boxLeftServo = HardwareMap.get(Servo.class, "leftServo");
         boxRightServo = HardwareMap.get(Servo.class, "rightServo");
-        separatorServo = HardwareMap.get(Servo.class, "separatorServo");
-        doorServo = HardwareMap.get(Servo.class, "doorServo");
-        hookServo = HardwareMap.get(Servo.class, "hookServo");
+//        separatorServo = HardwareMap.get(Servo.class, "separatorServo");
+//        doorServo = HardwareMap.get(Servo.class, "doorServo");
+//        hookServo = HardwareMap.get(Servo.class, "hookServo");
 
         //Set up motor direction
         frontRightMotor.setDirection(DcMotor.Direction.FORWARD);
         frontLeftMotor.setDirection(DcMotor.Direction.REVERSE);
         backRightMotor.setDirection(DcMotor.Direction.FORWARD);
         backLeftMotor.setDirection(DcMotor.Direction.REVERSE);
-        intakeMotor.setDirection(DcMotor.Direction.FORWARD);
+//        intakeMotor.setDirection(DcMotor.Direction.FORWARD);
 
         slideLeftMotor.setDirection(DcMotor.Direction.FORWARD);
         slideRightMotor.setDirection((DcMotor.Direction.FORWARD));
 
-        actuatorMotor.setDirection(DcMotorSimple.Direction.FORWARD);
+//        actuatorMotor.setDirection(DcMotorSimple.Direction.FORWARD);
 
         boxLeftServo.setDirection(Servo.Direction.FORWARD);
         boxRightServo.setDirection(Servo.Direction.FORWARD);
-        separatorServo.setDirection(Servo.Direction.FORWARD);
-        doorServo.setDirection(Servo.Direction.FORWARD);
-        hookServo.setDirection(Servo.Direction.FORWARD);
+//        separatorServo.setDirection(Servo.Direction.FORWARD);
+//        doorServo.setDirection(Servo.Direction.FORWARD);
+//        hookServo.setDirection(Servo.Direction.FORWARD);
 
         //Set motor mode
         frontRightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         frontLeftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         backRightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         backLeftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        intakeMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+//        intakeMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         slideLeftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         slideRightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
@@ -103,18 +103,21 @@ public class FireHardwareMap {
         frontLeftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         backRightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         backLeftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        intakeMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+//        intakeMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         slideRightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         slideLeftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        actuatorMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+//        actuatorMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         //Set 0 power
         frontRightMotor.setPower(0);
         frontLeftMotor.setPower(0);
         backRightMotor.setPower(0);
         backLeftMotor.setPower(0);
-        intakeMotor.setPower(0);
-        actuatorMotor.setPower(0);
+//        intakeMotor.setPower(0);
+//        actuatorMotor.setPower(0);
+
+        boxLeftServo.setPosition(Constants.BOXLEFTSERVO_HOMEPOSITION);
+        boxRightServo.setPosition(Constants.BOXRIGHTSERVO_HOMEPOSITION);
 
 //        boxLeftServo.setPower(0.0);
 //        boxRightServo.setPower(0.0);

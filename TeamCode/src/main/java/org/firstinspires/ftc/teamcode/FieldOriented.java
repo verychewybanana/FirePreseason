@@ -168,8 +168,8 @@ public class FieldOriented extends LinearOpMode {
             HW.frontRightMotor.setPower(rightFrontPower);
             HW.backLeftMotor.setPower(leftBackPower);
             HW.backRightMotor.setPower(rightBackPower);
-            HW.intakeMotor.setPower(intakeWheelPower);
-            HW.actuatorMotor.setPower(actuatorPower);
+//            HW.intakeMotor.setPower(intakeWheelPower);
+//            HW.actuatorMotor.setPower(actuatorPower);
 
 //            HW.doorServo.setPower(doorServoPower);
 //            HW.boxRightServo.setPower(-leftRightServoPower*0.5);
@@ -199,7 +199,7 @@ public class FieldOriented extends LinearOpMode {
             telemetry.addData("slideLeftMotorTicks target ", HW.slideLeftMotor.getTargetPosition());
 //            telemetry.addData("boxLeftServo pow: ", HW.boxLeftServo.getPower());
 //            telemetry.addData("doorServo power: ", HW.doorServo.getPower());
-            telemetry.addData("doorServo exists: ", HW.doorServo.getDeviceName());
+//            telemetry.addData("doorServo exists: ", HW.doorServo.getDeviceName());
             telemetry.addData("Color red: ", HW.color.red());
             telemetry.addData("Color greed: ", HW.color.green());
             telemetry.addData("Color blue:", HW.color.blue());
