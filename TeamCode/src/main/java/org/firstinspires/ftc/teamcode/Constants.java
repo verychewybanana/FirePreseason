@@ -1,8 +1,7 @@
 package org.firstinspires.ftc.teamcode;
 
-import com.acmerobotics.dashboard.config.Config;
 
-@Config
+
 public final class Constants {
     public static final int slideGroundLevelTicks = 0;
     public static final int lowSlideTicks = 800;

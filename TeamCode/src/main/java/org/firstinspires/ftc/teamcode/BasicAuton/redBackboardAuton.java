@@ -4,7 +4,6 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.FireHardwareMap;
-import org.firstinspires.ftc.teamcode.vision.PositionDetector;
 
 @Autonomous(name="redBackboardAuton", group="Auton")
 public class redBackboardAuton extends LinearOpMode {
@@ -15,8 +14,7 @@ public class redBackboardAuton extends LinearOpMode {
     public void runOpMode() {
         robot = new FireHardwareMap(this.hardwareMap);
         BasicAutoDriving autoDriving = new BasicAutoDriving(robot.frontLeftMotor, robot.frontRightMotor, robot.backLeftMotor, robot.backRightMotor);
-        PositionDetector pd = new PositionDetector(hardwareMap, telemetry);
-        pd.startStreaming();
+
 
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
@@ -25,9 +23,6 @@ public class redBackboardAuton extends LinearOpMode {
 
         if (opModeIsActive()){
 
-            int tick = parseDirection(pd.getValue());
-            scorePreLoaded(tick, autoDriving);
-            sleep(2000);
 
 
         }
