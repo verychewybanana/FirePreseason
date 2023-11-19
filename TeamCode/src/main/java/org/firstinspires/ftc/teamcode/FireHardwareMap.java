@@ -26,11 +26,11 @@ public class FireHardwareMap {
 
     //create mechanism servos
     public DcMotor intakeMotor = null;
-    public CRServo boxLeftServo = null;
-    public CRServo boxRightServo = null;
-    public CRServo doorServo = null;
-    public CRServo separatorServo = null;
-    public CRServo hookServo = null;
+    public Servo boxLeftServo = null;
+    public Servo boxRightServo = null;
+    public Servo doorServo = null;
+    public Servo separatorServo = null;
+    public Servo hookServo = null;
 
     public RevBlinkinLedDriver led = null;
 
@@ -63,11 +63,11 @@ public class FireHardwareMap {
         led = HardwareMap.get(RevBlinkinLedDriver.class, "led");
         color = HardwareMap.get(ColorRangeSensor.class, "color");
         //Making servo
-        boxLeftServo = HardwareMap.get(CRServo.class, "leftServo");
-        boxRightServo = HardwareMap.get(CRServo.class, "rightServo");
-        separatorServo = HardwareMap.get(CRServo.class, "separatorServo");
-        doorServo = HardwareMap.get(CRServo.class, "doorServo");
-        hookServo = HardwareMap.get(CRServo.class, "hookServo");
+        boxLeftServo = HardwareMap.get(Servo.class, "leftServo");
+        boxRightServo = HardwareMap.get(Servo.class, "rightServo");
+        separatorServo = HardwareMap.get(Servo.class, "separatorServo");
+        doorServo = HardwareMap.get(Servo.class, "doorServo");
+        hookServo = HardwareMap.get(Servo.class, "hookServo");
 
         //Set up motor direction
         frontRightMotor.setDirection(DcMotor.Direction.FORWARD);
@@ -81,11 +81,11 @@ public class FireHardwareMap {
 
         actuatorMotor.setDirection(DcMotorSimple.Direction.FORWARD);
 
-        boxLeftServo.setDirection(CRServo.Direction.FORWARD);
-        boxRightServo.setDirection(CRServo.Direction.FORWARD);
-        separatorServo.setDirection(CRServo.Direction.FORWARD);
-        doorServo.setDirection(CRServo.Direction.FORWARD);
-        hookServo.setDirection(CRServo.Direction.FORWARD);
+        boxLeftServo.setDirection(Servo.Direction.FORWARD);
+        boxRightServo.setDirection(Servo.Direction.FORWARD);
+        separatorServo.setDirection(Servo.Direction.FORWARD);
+        doorServo.setDirection(Servo.Direction.FORWARD);
+        hookServo.setDirection(Servo.Direction.FORWARD);
 
         //Set motor mode
         frontRightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);

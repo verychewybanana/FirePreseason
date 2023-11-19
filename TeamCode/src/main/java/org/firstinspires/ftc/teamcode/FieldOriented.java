@@ -171,13 +171,13 @@ public class FieldOriented extends LinearOpMode {
             HW.intakeMotor.setPower(intakeWheelPower);
             HW.actuatorMotor.setPower(actuatorPower);
 
-            HW.doorServo.setPower(doorServoPower);
-            HW.boxRightServo.setPower(-leftRightServoPower*0.5);
-            HW.boxLeftServo.setPower(leftRightServoPower*0.5);
-            HW.separatorServo.setPower(separatorServoPower);
-            HW.slideRightMotor.setPower(axial2);
-            HW.slideLeftMotor.setPower(axial2);
-            HW.hookServo.setPower(hookServoPower);
+//            HW.doorServo.setPower(doorServoPower);
+//            HW.boxRightServo.setPower(-leftRightServoPower*0.5);
+//            HW.boxLeftServo.setPower(leftRightServoPower*0.5);
+//            HW.separatorServo.setPower(separatorServoPower);
+//            HW.slideRightMotor.setPower(axial2);
+//            HW.slideLeftMotor.setPower(axial2);
+//            HW.hookServo.setPower(hookServoPower);
 
 
 
@@ -197,8 +197,8 @@ public class FieldOriented extends LinearOpMode {
 //            telemetry.addData("Current backRightMotor Encoder Position: ", HW.backRightMotor.getCurrentPosition());
 //            telemetry.addData("backRightMotor Operational: ", HW.backRightMotor.isBusy());
             telemetry.addData("slideLeftMotorTicks target ", HW.slideLeftMotor.getTargetPosition());
-            telemetry.addData("boxLeftServo pow: ", HW.boxLeftServo.getPower());
-            telemetry.addData("doorServo power: ", HW.doorServo.getPower());
+//            telemetry.addData("boxLeftServo pow: ", HW.boxLeftServo.getPower());
+//            telemetry.addData("doorServo power: ", HW.doorServo.getPower());
             telemetry.addData("doorServo exists: ", HW.doorServo.getDeviceName());
             telemetry.addData("Color red: ", HW.color.red());
             telemetry.addData("Color greed: ", HW.color.green());

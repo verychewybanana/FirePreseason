@@ -170,10 +170,10 @@ public class LinearTeleOp extends LinearOpMode {
             HW.intakeMotor.setPower(intakeWheelPower/1.2);
             HW.actuatorMotor.setPower(yaw2);
 
-            HW.doorServo.setPower(doorServoPower);
-            HW.boxRightServo.setPower(leftRightServoPower*0.5);
-            HW.boxLeftServo.setPower(leftRightServoPower*0.45*0.5);
-            HW.separatorServo.setPower(separatorServoPower);
+//            HW.doorServo.setPower(doorServoPower);
+//            HW.boxRightServo.setPower(leftRightServoPower*0.5);
+//            HW.boxLeftServo.setPower(leftRightServoPower*0.45*0.5);
+//            HW.separatorServo.setPower(separatorServoPower);
 
 
 
@@ -193,8 +193,8 @@ public class LinearTeleOp extends LinearOpMode {
 //            telemetry.addData("Current backRightMotor Encoder Position: ", HW.backRightMotor.getCurrentPosition());
 //            telemetry.addData("backRightMotor Operational: ", HW.backRightMotor.isBusy());
             telemetry.addData("slideLeftMotorTicks target ", HW.slideLeftMotor.getTargetPosition());
-            telemetry.addData("boxLeftServo pow: ", HW.boxLeftServo.getPower());
-            telemetry.addData("doorServo power: ", HW.doorServo.getPower());
+//            telemetry.addData("boxLeftServo pow: ", HW.boxLeftServo.getPower());
+//            telemetry.addData("doorServo power: ", HW.doorServo.getPower());
             telemetry.addData("doorServo exists: ", HW.doorServo.getDeviceName());
             telemetry.addData("light: ", HW.color.getRawLightDetectedMax());
             telemetry.update();
