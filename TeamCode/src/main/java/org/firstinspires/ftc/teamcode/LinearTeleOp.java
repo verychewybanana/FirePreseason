@@ -38,7 +38,7 @@ public class LinearTeleOp extends LinearOpMode {
     private ElapsedTime runtime = new ElapsedTime();
     private FireHardwareMap HW = null;
 
-    public final double leftRightServoSpeed = 0.01;
+    public final double leftRightServoSpeed = 0.001;
 
     @Override
 
@@ -173,6 +173,7 @@ public class LinearTeleOp extends LinearOpMode {
             HW.boxLeftServo.setPosition(leftRightServoPosition);
             HW.boxRightServo.setPosition(leftRightServoPosition);
 
+
 //            HW.doorServo.setPower(doorServoPower);
 //            HW.boxRightServo.setPower(leftRightServoPower*0.5);
 //            HW.boxLeftServo.setPower(leftRightServoPower*0.45*0.5);
@@ -200,6 +201,9 @@ public class LinearTeleOp extends LinearOpMode {
 //            telemetry.addData("doorServo power: ", HW.doorServo.getPower());
 //            telemetry.addData("doorServo exists: ", HW.doorServo.getDeviceName());
             telemetry.addData("light: ", HW.color.getRawLightDetectedMax());
+            telemetry.addData("boxLeftServo Position: ", HW.boxLeftServo.getPosition());
+            telemetry.addData("boxRightServo Position: ", HW.boxRightServo.getPosition());
+            telemetry.addData("boxServos target: ", leftRightServoPosition);
             telemetry.update();
 
         }

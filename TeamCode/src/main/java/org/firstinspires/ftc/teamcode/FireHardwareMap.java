@@ -60,7 +60,7 @@ public class FireHardwareMap {
 //        actuatorMotor = HardwareMap.get(DcMotor.class, "actuatorMotor");
         slideLeftMotor = HardwareMap.get(DcMotor.class, "slideLeftMotor");
         slideRightMotor = HardwareMap.get(DcMotor.class, "slideRightMotor");
-        led = HardwareMap.get(RevBlinkinLedDriver.class, "led");
+//        led = HardwareMap.get(RevBlinkinLedDriver.class, "led");
         color = HardwareMap.get(ColorRangeSensor.class, "color");
         //Making servo
         boxLeftServo = HardwareMap.get(Servo.class, "leftServo");
@@ -82,7 +82,7 @@ public class FireHardwareMap {
 //        actuatorMotor.setDirection(DcMotorSimple.Direction.FORWARD);
 
         boxLeftServo.setDirection(Servo.Direction.FORWARD);
-        boxRightServo.setDirection(Servo.Direction.FORWARD);
+        boxRightServo.setDirection(Servo.Direction.REVERSE);
 //        separatorServo.setDirection(Servo.Direction.FORWARD);
 //        doorServo.setDirection(Servo.Direction.FORWARD);
 //        hookServo.setDirection(Servo.Direction.FORWARD);
