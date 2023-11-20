@@ -28,7 +28,7 @@ public class FireHardwareMap {
 //    public DcMotor intakeMotor = null;
     public Servo boxLeftServo = null;
     public Servo boxRightServo = null;
-//    public Servo doorServo = null;
+//    public CRServo doorServo = null;
 //    public Servo separatorServo = null;
 //    public Servo hookServo = null;
 
