@@ -25,7 +25,7 @@ public class FireHardwareMap {
 //    public DcMotor actuatorMotor = null;
 
     //create mechanism servos
-//    public DcMotor intakeMotor = null;
+    public DcMotor intakeMotor = null;
     public Servo boxLeftServo = null;
     public Servo boxRightServo = null;
 //    public CRServo doorServo = null;
@@ -56,7 +56,7 @@ public class FireHardwareMap {
         frontLeftMotor = HardwareMap.get(DcMotor.class, "frontLeftMotor");
         backRightMotor = HardwareMap.get(DcMotor.class, "backRightMotor");
         backLeftMotor = HardwareMap.get(DcMotor.class, "backLeftMotor");
-//        intakeMotor = HardwareMap.get(DcMotor.class, "intakeMotor");
+        intakeMotor = HardwareMap.get(DcMotor.class, "intakeMotor");
 //        actuatorMotor = HardwareMap.get(DcMotor.class, "actuatorMotor");
         slideLeftMotor = HardwareMap.get(DcMotor.class, "slideLeftMotor");
         slideRightMotor = HardwareMap.get(DcMotor.class, "slideRightMotor");

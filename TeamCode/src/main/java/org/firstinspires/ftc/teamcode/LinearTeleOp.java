@@ -38,7 +38,7 @@ public class LinearTeleOp extends LinearOpMode {
     private ElapsedTime runtime = new ElapsedTime();
     private FireHardwareMap HW = null;
 
-    public final double leftRightServoSpeed = 0.001;
+    public final double leftRightServoSpeed = 0.01;
 
     @Override
 
@@ -51,6 +51,7 @@ public class LinearTeleOp extends LinearOpMode {
 
         // Wait for the game to start (driver presses PLAY)
         telemetry.addData("Status", "Initialized");
+        telemetry.addData("Last updated: ", "");
         telemetry.update();
 
         waitForStart();
@@ -83,7 +84,7 @@ public class LinearTeleOp extends LinearOpMode {
             double leftBackPower   = axial - lateral + yaw;
             double rightBackPower  = axial + lateral - yaw;
 
-            double intakeWheelPower = axial2;
+            double intakeWheelPower = gamepad1.right_trigger - gamepad1.left_trigger;
 
 
             // Normalize the values so no wheel power exceeds 100%
@@ -167,7 +168,7 @@ public class LinearTeleOp extends LinearOpMode {
             HW.frontRightMotor.setPower(rightFrontPower);
             HW.backLeftMotor.setPower(leftBackPower);
             HW.backRightMotor.setPower(rightBackPower);
-//            HW.intakeMotor.setPower(intakeWheelPower/1.2);
+            HW.intakeMotor.setPower(intakeWheelPower/1.2);
 //            HW.actuatorMotor.setPower(yaw2);
 
             HW.boxLeftServo.setPosition(leftRightServoPosition);
