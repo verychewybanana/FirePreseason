@@ -74,5 +74,8 @@ public final class Constants {
     public static final double BOXLEFTSERVO_HOMEPOSITION = 0.5;
     public static final double BOXRIGHTSERVO_HOMEPOSITION = 0.5;
 
+    public static final int CAMERA_WIDTH = 320;
+
+
 
 }

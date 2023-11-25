@@ -22,7 +22,7 @@ public class redBackboardAuton extends LinearOpMode {
         telemetry.addData("Status", "Initialized");
 
         if (opModeIsActive()){
-
+            scorePreLoaded(2, autoDriving);
 
 
         }
@@ -31,29 +31,46 @@ public class redBackboardAuton extends LinearOpMode {
 
     public void scorePreLoaded(int tickID, BasicAutoDriving bad) {
         if (tickID == 0) { // middle tick
+            bad.drive(70);
+            sleep(2000);
             bad.drive(-65);
             sleep(2000);
-            bad.drive(64);
-            sleep(2000);
-            bad.turn(-90);
+            bad.turn(86);
             sleep(1500);
-            bad.drive(-46);
+            bad.drive(46);
             sleep(9000);
-        } else if (tickID == 1) {
-            scorePreLoaded(0, bad);
-        } else if (tickID == 2) {
-            bad.turn(-12);
+        } else if (tickID == 1) { // left tick
+            bad.drive(40);
+            sleep(1500);
+            bad.turn(-45);
             sleep(500);
+            bad.drive(18);
+            sleep(1000);
+            bad.drive(-18);
+            sleep(1000);
+            bad.turn(45);
+            sleep(500);
+            bad.drive(-27);
+            sleep(1500);
+            bad.turn(80);
+            sleep(1000);
+            bad.drive(45);
+            sleep(3000);
+        } else if (tickID == 2) { // right tick
+            bad.turn(13);
+            sleep(500);
+            bad.drive(48);
+            sleep(2000);
             bad.drive(-40);
             sleep(2000);
-            bad.turn(12);
+            bad.turn(-13);
             sleep(500);
-            bad.drive(32);
-            sleep(2000);
-            bad.turn(-90);
+            bad.turn(83);
             sleep(1500);
-            bad.drive(-40);
-            sleep(9000);
+            bad.drive(180);
+            sleep(3000);
+
+
         }
     }
 
