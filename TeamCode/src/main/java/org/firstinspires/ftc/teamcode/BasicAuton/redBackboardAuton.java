@@ -37,7 +37,7 @@ public class redBackboardAuton extends LinearOpMode {
             sleep(2000);
             bad.turn(86);
             sleep(1500);
-            bad.drive(46);
+            bad.drive(45);
             sleep(9000);
         } else if (tickID == 1) { // left tick
             bad.drive(40);
@@ -67,7 +67,7 @@ public class redBackboardAuton extends LinearOpMode {
             sleep(500);
             bad.turn(83);
             sleep(1500);
-            bad.drive(180);
+            bad.drive(45);
             sleep(3000);
 
 

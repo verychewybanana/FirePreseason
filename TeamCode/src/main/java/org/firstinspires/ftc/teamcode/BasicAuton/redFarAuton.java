@@ -22,7 +22,7 @@ public class redFarAuton extends LinearOpMode {
         telemetry.addData("Status", "Initialized");
 
         if (opModeIsActive()){
-
+            scorePreLoaded(2, autoDriving);
 
 
 
