@@ -124,15 +124,15 @@ public class LinearTeleOp extends LinearOpMode {
                 HW.slideRightMotor.setTargetPosition(Constants.lowSlideTicks);
             }
 
-//            double doorServoPower;
-//
-//            if (gamepad2.y) {
-//                doorServoPower = 0.8;
-//            } else if (gamepad2.b) {
-//                doorServoPower = -0.8;
-//            } else {
-//                doorServoPower = 0;
-//            }
+            double doorServoPower;
+
+            if (gamepad2.y) {
+                doorServoPower = 0.8;
+            } else if (gamepad2.b) {
+                doorServoPower = -0.8;
+            } else {
+                doorServoPower = 0;
+            }
 
             double leftRightServoPosition = HW.boxLeftServo.getPosition();
 
@@ -175,7 +175,7 @@ public class LinearTeleOp extends LinearOpMode {
             HW.boxRightServo.setPosition(leftRightServoPosition);
 
 
-//            HW.doorServo.setPower(doorServoPower);
+            HW.doorServo.setPower(doorServoPower);
 //            HW.boxRightServo.setPower(leftRightServoPower*0.5);
 //            HW.boxLeftServo.setPower(leftRightServoPower*0.45*0.5);
 //            HW.separatorServo.setPower(separatorServoPower);

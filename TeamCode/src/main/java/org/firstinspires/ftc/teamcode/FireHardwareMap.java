@@ -28,8 +28,8 @@ public class FireHardwareMap {
     public DcMotor intakeMotor = null;
     public Servo boxLeftServo = null;
     public Servo boxRightServo = null;
-//    public CRServo doorServo = null;
-//    public Servo separatorServo = null;
+    public CRServo doorServo = null;
+    public Servo separatorServo = null;
 //    public Servo hookServo = null;
 
     public RevBlinkinLedDriver led = null;
@@ -60,13 +60,13 @@ public class FireHardwareMap {
 //        actuatorMotor = HardwareMap.get(DcMotor.class, "actuatorMotor");
         slideLeftMotor = HardwareMap.get(DcMotor.class, "slideLeftMotor");
         slideRightMotor = HardwareMap.get(DcMotor.class, "slideRightMotor");
-//        led = HardwareMap.get(RevBlinkinLedDriver.class, "led");
+        led = HardwareMap.get(RevBlinkinLedDriver.class, "led");
         color = HardwareMap.get(ColorRangeSensor.class, "color");
         //Making servo
         boxLeftServo = HardwareMap.get(Servo.class, "leftServo");
         boxRightServo = HardwareMap.get(Servo.class, "rightServo");
-//        separatorServo = HardwareMap.get(Servo.class, "separatorServo");
-//        doorServo = HardwareMap.get(Servo.class, "doorServo");
+        separatorServo = HardwareMap.get(Servo.class, "separatorServo");
+        doorServo = HardwareMap.get(CRServo.class, "doorServo");
 //        hookServo = HardwareMap.get(Servo.class, "hookServo");
 
         //Set up motor direction
@@ -94,8 +94,8 @@ public class FireHardwareMap {
         backLeftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 //        intakeMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
-        slideLeftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        slideRightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        slideLeftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        slideRightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         //Set zero power behavior
 
