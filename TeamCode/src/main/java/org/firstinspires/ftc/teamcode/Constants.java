@@ -71,8 +71,8 @@ public final class Constants {
     public static int final_blue_min = 150;
     public static int final_blue_max = 255;
 
-    public static final double BOXLEFTSERVO_HOMEPOSITION = 0.5;
-    public static final double BOXRIGHTSERVO_HOMEPOSITION = 0.5;
+    public static final double BOXLEFTSERVO_HOMEPOSITION = 0.6;
+    public static final double BOXRIGHTSERVO_HOMEPOSITION = 0.6;
 
     public static final int CAMERA_WIDTH = 320;
 
