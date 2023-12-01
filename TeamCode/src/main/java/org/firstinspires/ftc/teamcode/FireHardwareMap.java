@@ -29,7 +29,7 @@ public class FireHardwareMap {
     public Servo boxLeftServo = null;
     public Servo boxRightServo = null;
     public CRServo doorServo = null;
-    public Servo separatorServo = null;
+//    public Servo separatorServo = null;
 //    public Servo hookServo = null;
 
     public RevBlinkinLedDriver led = null;
@@ -65,7 +65,7 @@ public class FireHardwareMap {
         //Making servo
         boxLeftServo = HardwareMap.get(Servo.class, "leftServo");
         boxRightServo = HardwareMap.get(Servo.class, "rightServo");
-        separatorServo = HardwareMap.get(Servo.class, "separatorServo");
+//        separatorServo = HardwareMap.get(Servo.class, "separatorServo");
         doorServo = HardwareMap.get(CRServo.class, "doorServo");
 //        hookServo = HardwareMap.get(Servo.class, "hookServo");
 
@@ -76,7 +76,7 @@ public class FireHardwareMap {
         backLeftMotor.setDirection(DcMotor.Direction.REVERSE);
 //        intakeMotor.setDirection(DcMotor.Direction.FORWARD);
 
-        slideLeftMotor.setDirection(DcMotor.Direction.FORWARD);
+        slideLeftMotor.setDirection(DcMotor.Direction.REVERSE);
         slideRightMotor.setDirection((DcMotor.Direction.FORWARD));
 
 //        actuatorMotor.setDirection(DcMotorSimple.Direction.FORWARD);
@@ -94,8 +94,8 @@ public class FireHardwareMap {
         backLeftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 //        intakeMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
-        slideLeftMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        slideRightMotor.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        slideLeftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        slideRightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
         //Set zero power behavior
 
@@ -118,6 +118,13 @@ public class FireHardwareMap {
 
         boxLeftServo.setPosition(Constants.BOXLEFTSERVO_HOMEPOSITION);
         boxRightServo.setPosition(Constants.BOXRIGHTSERVO_HOMEPOSITION);
+
+        slideLeftMotor.setTargetPosition(0);
+        slideRightMotor.setTargetPosition(0);
+
+        slideLeftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        slideRightMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
 
 //        boxLeftServo.setPower(0.0);
 //        boxRightServo.setPower(0.0);

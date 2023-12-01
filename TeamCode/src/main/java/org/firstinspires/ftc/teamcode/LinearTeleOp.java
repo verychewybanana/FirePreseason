@@ -136,8 +136,11 @@ public class LinearTeleOp extends LinearOpMode {
 
             double leftRightServoPosition = HW.boxLeftServo.getPosition();
 
-            if (gamepad2.y) {
+            if (gamepad2.x) {
                 leftRightServoPosition += leftRightServoSpeed;
+
+
+
             } else if (gamepad2.a) {
                 leftRightServoPosition -= leftRightServoSpeed;
             }
@@ -174,6 +177,9 @@ public class LinearTeleOp extends LinearOpMode {
             HW.boxLeftServo.setPosition(leftRightServoPosition);
             HW.boxRightServo.setPosition(leftRightServoPosition);
 
+            HW.slideLeftMotor.setPower(0.5);
+            HW.slideRightMotor.setPower(0.5);
+
 
             HW.doorServo.setPower(doorServoPower);
 //            HW.boxRightServo.setPower(leftRightServoPower*0.5);
@@ -198,6 +204,8 @@ public class LinearTeleOp extends LinearOpMode {
 //            telemetry.addData("Current backRightMotor Encoder Position: ", HW.backRightMotor.getCurrentPosition());
 //            telemetry.addData("backRightMotor Operational: ", HW.backRightMotor.isBusy());
             telemetry.addData("slideLeftMotorTicks target ", HW.slideLeftMotor.getTargetPosition());
+            telemetry.addData("slideLeftMotor current ", HW.slideLeftMotor.getCurrentPosition());
+            telemetry.addData("slideRightMotor current ", HW.slideRightMotor.getCurrentPosition());
 //            telemetry.addData("boxLeftServo pow: ", HW.boxLeftServo.getPower());
 //            telemetry.addData("doorServo power: ", HW.doorServo.getPower());
 //            telemetry.addData("doorServo exists: ", HW.doorServo.getDeviceName());
