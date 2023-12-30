@@ -47,7 +47,7 @@ public class blueBackboardAuton extends LinearOpMode {
         visionPortal = VisionPortal.easyCreateWithDefaults(
                 hardwareMap.get(WebcamName.class, "Webcam 1"), tfod);
 
-        tfod.setZoom(2.0);
+        tfod.setZoom(1.0);
 
         telemetry.addData("Camera Status: ", "Initialized");
         telemetry.update();
@@ -55,40 +55,48 @@ public class blueBackboardAuton extends LinearOpMode {
     }
 
     public int findPixelLocation(BasicAutoDriving bad) {
-//        bad.drive(30);
-//        sleep(2000);
-        visionPortal.resumeStreaming();
+        bad.turn(-10);
+        sleep(500);
+        bad.drive(37);
+        sleep(2000);
+//        visionPortal.resumeStreaming();
         sleep(1500);
         List<Recognition> currentRecognitions = tfod.getRecognitions();
         sleep(1000);
         telemetry.addData("recogs len: ", currentRecognitions.size());
         telemetry.update();
         if (currentRecognitions.size() != 0) {
-//            bad.drive(-30);
-//            sleep(2000);
+            bad.drive(-37);
+            sleep(2000);
+            bad.turn(4);
+            sleep(500);
             telemetry.addData("Pixel Location: ", 1);
             telemetry.update();
             sleep(6000);
             return 1;
         }
-        visionPortal.stopStreaming();
+//        visionPortal.stopStreaming();
 
-        bad.turn(10);
+        bad.turn(27);
         sleep(500);
         bad.drive(30);
         sleep(1000);
 
-        visionPortal.resumeStreaming();
+//        visionPortal.resumeStreaming();
         sleep(1500);
         currentRecognitions = tfod.getRecognitions();
         telemetry.addData("Recogs len: ", currentRecognitions.size());
         telemetry.update();
         sleep(100);
-        visionPortal.stopStreaming();
+//        visionPortal.stopStreaming();
         if (currentRecognitions.size() != 0) {
             bad.drive(-30);
             sleep(1000);
-            bad.turn(-10);
+            bad.turn(-27);
+            sleep(500);
+            bad.drive(-36);
+            sleep(1000);
+            bad.turn(5);
             sleep(500);
             telemetry.addData("Pixel Location: ", 0);
             telemetry.update();
@@ -97,7 +105,11 @@ public class blueBackboardAuton extends LinearOpMode {
         } else {
             bad.drive(-30);
             sleep(1000);
-            bad.turn(-10);
+            bad.turn(-27);
+            sleep(500);
+            bad.drive(-36);
+            sleep(1000);
+            bad.turn(5);
             sleep(500);
             telemetry.addData("Pixel Location: ", 2);
             telemetry.update();
@@ -108,44 +120,35 @@ public class blueBackboardAuton extends LinearOpMode {
 
     public void scorePreLoaded(int tickID, BasicAutoDriving bad) {
         if (tickID == 0) { // middle tick
-            bad.drive(70);
+            bad.drive(60);
             sleep(2000);
-            bad.drive(-65);
+            robot.intakeMotor.setPower(-0.6);
+            sleep(500);
+            robot.intakeMotor.setPower(0.0);
+            bad.drive(-55);
             sleep(2000);
             bad.turn(-86);
             sleep(1500);
-            bad.drive(40);
+            bad.drive(80);
             sleep(3000);
         } else if (tickID == 1) { // left tick
             bad.turn(-13);
             sleep(500);
             bad.drive(48);
             sleep(2000);
+            robot.intakeMotor.setPower(-0.7);
+            sleep(500);
+            robot.intakeMotor.setPower(0.0);
             bad.drive(-40);
             sleep(2000);
             bad.turn(13);
             sleep(500);
-            bad.turn(86);
+            bad.turn(-86);
             sleep(1500);
-            bad.drive(30);
+            bad.drive(80);
             sleep(3000);
         } else if (tickID == 2) { // right tick
-            bad.drive(40);
-            sleep(1500);
-            bad.turn(45);
-            sleep(500);
-            bad.drive(18);
-            sleep(1000);
-            bad.drive(-18);
-            sleep(1000);
-            bad.turn(-45);
-            sleep(500);
-            bad.drive(-27);
-            sleep(1500);
-            bad.turn(80);
-            sleep(1000);
-            bad.drive(180);
-            sleep(3000);
+            scorePreLoaded(0, bad);
 
 
 //            bad.turn(15);

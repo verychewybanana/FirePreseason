@@ -31,9 +31,9 @@ public class blueFarAuton extends LinearOpMode {
         telemetry.update();
 
         if (opModeIsActive()){
-            initTfod();
-            int tickID = findPixelLocation(autoDriving);
-            scorePreLoaded(tickID, autoDriving);
+//            initTfod();
+//            int tickID = findPixelLocation(autoDriving);
+            scorePreLoaded(0, autoDriving);
 
 
 
@@ -108,14 +108,13 @@ public class blueFarAuton extends LinearOpMode {
 
     public void scorePreLoaded(int tickID, BasicAutoDriving bad) {
         if (tickID == 0) { // middle tick
-            bad.drive(-65);
+            bad.drive(50);
             sleep(2000);
-            bad.drive(64);
+            robot.intakeMotor.setPower(-0.7);
+            sleep(500);
+            robot.intakeMotor.setPower(0.0);
+            bad.drive(-43);
             sleep(2000);
-            bad.turn(-90);
-            sleep(1500);
-            bad.drive(190);
-            sleep(9000);
         } else if (tickID == 1) {
             bad.turn(-12);
             sleep(500);

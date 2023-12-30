@@ -3,7 +3,6 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.hardware.CRServo;
@@ -22,14 +21,14 @@ public class FireHardwareMap {
     // create slide motors
     public DcMotor slideLeftMotor = null;
     public DcMotor slideRightMotor = null;
-//    public DcMotor actuatorMotor = null;
+    public DcMotor stringMotor = null;
 
     //create mechanism servos
     public DcMotor intakeMotor = null;
     public Servo boxLeftServo = null;
     public Servo boxRightServo = null;
     public CRServo doorServo = null;
-//    public Servo separatorServo = null;
+    public Servo separatorServo = null;
 //    public Servo hookServo = null;
 
     public RevBlinkinLedDriver led = null;
@@ -57,7 +56,7 @@ public class FireHardwareMap {
         backRightMotor = HardwareMap.get(DcMotor.class, "backRightMotor");
         backLeftMotor = HardwareMap.get(DcMotor.class, "backLeftMotor");
         intakeMotor = HardwareMap.get(DcMotor.class, "intakeMotor");
-//        actuatorMotor = HardwareMap.get(DcMotor.class, "actuatorMotor");
+        stringMotor = HardwareMap.get(DcMotor.class, "stringMotor");
         slideLeftMotor = HardwareMap.get(DcMotor.class, "slideLeftMotor");
         slideRightMotor = HardwareMap.get(DcMotor.class, "slideRightMotor");
         led = HardwareMap.get(RevBlinkinLedDriver.class, "led");
@@ -65,9 +64,13 @@ public class FireHardwareMap {
         //Making servo
         boxLeftServo = HardwareMap.get(Servo.class, "leftServo");
         boxRightServo = HardwareMap.get(Servo.class, "rightServo");
-//        separatorServo = HardwareMap.get(Servo.class, "separatorServo");
+        separatorServo = HardwareMap.get(Servo.class, "separatorServo");
         doorServo = HardwareMap.get(CRServo.class, "doorServo");
 //        hookServo = HardwareMap.get(Servo.class, "hookServo");
+
+        slideLeftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        slideRightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
 
         //Set up motor direction
         frontRightMotor.setDirection(DcMotor.Direction.FORWARD);
@@ -76,14 +79,14 @@ public class FireHardwareMap {
         backLeftMotor.setDirection(DcMotor.Direction.REVERSE);
 //        intakeMotor.setDirection(DcMotor.Direction.FORWARD);
 
-        slideLeftMotor.setDirection(DcMotor.Direction.REVERSE);
+        slideLeftMotor.setDirection(DcMotor.Direction.FORWARD);
         slideRightMotor.setDirection((DcMotor.Direction.FORWARD));
 
-//        actuatorMotor.setDirection(DcMotorSimple.Direction.FORWARD);
+        stringMotor.setDirection(DcMotor.Direction.FORWARD);
 
         boxLeftServo.setDirection(Servo.Direction.FORWARD);
         boxRightServo.setDirection(Servo.Direction.REVERSE);
-//        separatorServo.setDirection(Servo.Direction.FORWARD);
+        separatorServo.setDirection(Servo.Direction.FORWARD);
 //        doorServo.setDirection(Servo.Direction.FORWARD);
 //        hookServo.setDirection(Servo.Direction.FORWARD);
 
@@ -106,7 +109,7 @@ public class FireHardwareMap {
 //        intakeMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         slideRightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         slideLeftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-//        actuatorMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        stringMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         //Set 0 power
         frontRightMotor.setPower(0);
@@ -126,10 +129,10 @@ public class FireHardwareMap {
         slideRightMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
 
-//        boxLeftServo.setPower(0.0);
-//        boxRightServo.setPower(0.0);
-//        separatorServo.setPower(0.0);
-//        doorServo.setPower(0.0);
+        boxLeftServo.setPosition(0.27);
+        boxRightServo.setPosition(0.27);
+        separatorServo.setPosition(0.5);
+        doorServo.setPower(0.0);
 //        hookServo.setPower(0.0);
 
 

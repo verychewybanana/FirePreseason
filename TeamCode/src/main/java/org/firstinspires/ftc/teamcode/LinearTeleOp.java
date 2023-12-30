@@ -86,6 +86,8 @@ public class LinearTeleOp extends LinearOpMode {
 
             double intakeWheelPower = gamepad1.right_trigger - gamepad1.left_trigger;
 
+            double hangMotorPower = 0;
+
 
             // Normalize the values so no wheel power exceeds 100%
             // This ensures that the robot maintains the desired motion.
@@ -126,37 +128,44 @@ public class LinearTeleOp extends LinearOpMode {
 
             double doorServoPower;
 
-            if (gamepad2.y) {
+            if (gamepad2.b) {
                 doorServoPower = 0.8;
-            } else if (gamepad2.b) {
+            } else if (gamepad2.a) {
                 doorServoPower = -0.8;
             } else {
                 doorServoPower = 0;
             }
 
             double leftRightServoPosition = HW.boxLeftServo.getPosition();
+            // 1.0 is intake pos, 0.5 is scoring pos
+            if (gamepad2.right_trigger > 0.1) {
+                leftRightServoPosition = 0.27;
+//                if (leftRightServoPosition > 0.6) leftRightServoPosition = 0.6;
+            } else if (gamepad2.left_trigger > 0.1) {
+                leftRightServoPosition = 0.0;
+            } else {
+                if ((-gamepad2.right_stick_y) > 0.1 || (-gamepad2.right_stick_y) < -0.1)
+                    leftRightServoPosition += leftRightServoSpeed * (-gamepad2.right_stick_y);
 
-            if (gamepad2.x) {
-                leftRightServoPosition += leftRightServoSpeed;
-
-
-
-            } else if (gamepad2.a) {
-                leftRightServoPosition -= leftRightServoSpeed;
             }
 
-//            double separatorServoPower;
+            if (leftRightServoPosition < 0.0) leftRightServoPosition = 0.0;
+            else if (leftRightServoPosition > 0.27) leftRightServoPosition = 0.27;
+
+            double separatorServoPosition = HW.separatorServo.getPosition();
 //            if (gamepad2.left_bumper) {
-//                separatorServoPower = 0.9;
+//                separatorServoPosition = 0.3;
 //            }  else if (gamepad2.right_bumper) {
-//                separatorServoPower = -0.9;
-//            } else {
-//                separatorServoPower = 0.0;
+//                separatorServoPosition = 0.7;
 //            }
 //
 //            double hookServoPower;
 
-
+            if (gamepad1.dpad_up) {
+                hangMotorPower = 0.9;
+            } else if (gamepad1.dpad_down) {
+                hangMotorPower = -0.9;
+            }
 
 
 
@@ -171,7 +180,7 @@ public class LinearTeleOp extends LinearOpMode {
             HW.frontRightMotor.setPower(rightFrontPower);
             HW.backLeftMotor.setPower(leftBackPower);
             HW.backRightMotor.setPower(rightBackPower);
-            HW.intakeMotor.setPower(intakeWheelPower/1.2);
+            HW.intakeMotor.setPower(intakeWheelPower/1.01);
 //            HW.actuatorMotor.setPower(yaw2);
 
             HW.boxLeftServo.setPosition(leftRightServoPosition);
@@ -184,9 +193,9 @@ public class LinearTeleOp extends LinearOpMode {
             HW.doorServo.setPower(doorServoPower);
 //            HW.boxRightServo.setPower(leftRightServoPower*0.5);
 //            HW.boxLeftServo.setPower(leftRightServoPower*0.45*0.5);
-//            HW.separatorServo.setPower(separatorServoPower);
+            HW.separatorServo.setPosition(separatorServoPosition);
 
-
+            HW.stringMotor.setPower(hangMotorPower);
 
             // Show the elapsed game time and wheel power.
             telemetry.addData("Status", "Run Tim: " + runtime.toString());
@@ -213,6 +222,7 @@ public class LinearTeleOp extends LinearOpMode {
             telemetry.addData("boxLeftServo Position: ", HW.boxLeftServo.getPosition());
             telemetry.addData("boxRightServo Position: ", HW.boxRightServo.getPosition());
             telemetry.addData("boxServos target: ", leftRightServoPosition);
+            telemetry.addData("separatorServo current position: ", HW.separatorServo.getPosition());
             telemetry.update();
 
         }
