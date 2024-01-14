@@ -29,6 +29,8 @@ public class FireHardwareMap {
     public Servo boxLeftServo = null;
     public Servo boxRightServo = null;
     public CRServo doorServo = null;
+    public CRServo airplaneServo = null;
+
 //    public Servo separatorServo = null;
 //    public Servo hookServo = null;
 

@@ -134,6 +134,16 @@ public class LinearTeleOp extends LinearOpMode {
                 doorServoPower = 0;
             }
 
+            double airplaneServoPower;
+
+            if (gamepad1.y) {
+                airplaneServoPower = 0.8;
+            } else if (gamepad1.a) {
+                airplaneServoPower = -0.8;
+            } else {
+                airplaneServoPower = 0;
+            }
+
             double leftRightServoPosition = HW.boxLeftServo.getPosition();
 
             if (gamepad2.x) {
@@ -144,6 +154,8 @@ public class LinearTeleOp extends LinearOpMode {
             } else if (gamepad2.a) {
                 leftRightServoPosition -= leftRightServoSpeed;
             }
+
+
 
 //            double separatorServoPower;
 //            if (gamepad2.left_bumper) {
@@ -180,7 +192,7 @@ public class LinearTeleOp extends LinearOpMode {
             HW.slideLeftMotor.setPower(0.5);
             HW.slideRightMotor.setPower(0.5);
 
-
+            HW.airplaneServo.setPower(airplaneServoPower);
             HW.doorServo.setPower(doorServoPower);
 //            HW.boxRightServo.setPower(leftRightServoPower*0.5);
 //            HW.boxLeftServo.setPower(leftRightServoPower*0.45*0.5);
