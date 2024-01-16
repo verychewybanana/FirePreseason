@@ -234,6 +234,7 @@ public class LinearTeleOp extends LinearOpMode {
             telemetry.addData("boxRightServo Position: ", HW.boxRightServo.getPosition());
             telemetry.addData("boxServos target: ", leftRightServoPosition);
             telemetry.addData("separatorServo current position: ", HW.separatorServo.getPosition());
+            telemetry.addData("airplaneServo power: ", HW.airplaneServo.getPower());
             telemetry.update();
 
         }
