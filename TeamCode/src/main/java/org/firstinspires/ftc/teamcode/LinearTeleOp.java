@@ -204,6 +204,7 @@ public class LinearTeleOp extends LinearOpMode {
 //            HW.boxRightServo.setPower(leftRightServoPower*0.5);
 //            HW.boxLeftServo.setPower(leftRightServoPower*0.45*0.5);
             HW.separatorServo.setPosition(separatorServoPosition);
+            HW.airplaneServo.setPower(airplaneServoPower);
 
             HW.stringMotor.setPower(hangMotorPower);
 
