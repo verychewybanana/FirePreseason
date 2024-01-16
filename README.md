@@ -1,4 +1,2 @@
-# Road Runner Quickstart
-
-Check out the [docs](https://rr.brott.dev/docs/v1-0/tuning/).
-
+## Welcome!
+This repository contains the code for the Fire Robotics 2023-2024 season.
