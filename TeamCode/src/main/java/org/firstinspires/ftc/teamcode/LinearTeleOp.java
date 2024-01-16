@@ -136,6 +136,16 @@ public class LinearTeleOp extends LinearOpMode {
                 doorServoPower = 0;
             }
 
+            double airplaneServoPower;
+
+            if (gamepad1.y) {
+                airplaneServoPower = 0.8;
+            } else if (gamepad1.a) {
+                airplaneServoPower = -0.8;
+            } else {
+                airplaneServoPower = 0;
+            }
+
             double leftRightServoPosition = HW.boxLeftServo.getPosition();
             // 1.0 is intake pos, 0.5 is scoring pos
             if (gamepad2.right_trigger > 0.1) {

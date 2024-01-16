@@ -29,6 +29,7 @@ public class FireHardwareMap {
     public Servo boxRightServo = null;
     public CRServo doorServo = null;
     public Servo separatorServo = null;
+    public CRServo airplaneServo = null;
 //    public Servo hookServo = null;
 
     public RevBlinkinLedDriver led = null;
@@ -66,6 +67,7 @@ public class FireHardwareMap {
         boxRightServo = HardwareMap.get(Servo.class, "rightServo");
         separatorServo = HardwareMap.get(Servo.class, "separatorServo");
         doorServo = HardwareMap.get(CRServo.class, "doorServo");
+        airplaneServo = HardwareMap.get(CRServo.class, "airplaneServo");
 //        hookServo = HardwareMap.get(Servo.class, "hookServo");
 
         slideLeftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -87,6 +89,7 @@ public class FireHardwareMap {
         boxLeftServo.setDirection(Servo.Direction.FORWARD);
         boxRightServo.setDirection(Servo.Direction.REVERSE);
         separatorServo.setDirection(Servo.Direction.FORWARD);
+        airplaneServo.setDirection(CRServo.Direction.REVERSE);
 //        doorServo.setDirection(Servo.Direction.FORWARD);
 //        hookServo.setDirection(Servo.Direction.FORWARD);
 
@@ -133,6 +136,7 @@ public class FireHardwareMap {
         boxRightServo.setPosition(0.27);
         separatorServo.setPosition(0.5);
         doorServo.setPower(0.0);
+        airplaneServo.setPower(0.0);
 //        hookServo.setPower(0.0);
 
 
