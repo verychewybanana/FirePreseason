@@ -105,7 +105,8 @@ public class LinearTeleOp extends LinearOpMode {
 //                (lateral2)/=max;
                 yaw2 /=max;
             }
-            if(gamepad1.right_bumper){
+
+            if (gamepad1.right_bumper) {
                 i=i;
             }
             else{
@@ -114,6 +115,7 @@ public class LinearTeleOp extends LinearOpMode {
                 leftBackPower   /= 2;
                 rightBackPower  /= 2;
             }
+
 
             if (gamepad2.dpad_down) {
                 HW.slideLeftMotor.setTargetPosition(Constants.slideGroundLevelTicks);
@@ -209,7 +211,7 @@ public class LinearTeleOp extends LinearOpMode {
             HW.stringMotor.setPower(hangMotorPower);
 
             // Show the elapsed game time and wheel power.
-            telemetry.addData("Status", "Run Tim: " + runtime.toString());
+            telemetry.addData("Status", "Run Time: " + runtime.toString());
             telemetry.addData("Front left/Right", "%4.2f, %4.2f", leftFrontPower, rightFrontPower);
             telemetry.addData("Back  left/Right", "%4.2f, %4.2f", leftBackPower, rightBackPower);
 //            telemetry.addData("Servo  left/Right", "%4.2f, %4.2f", axial2, axial2);

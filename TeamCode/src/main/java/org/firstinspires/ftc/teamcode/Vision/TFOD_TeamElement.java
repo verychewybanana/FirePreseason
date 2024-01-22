@@ -94,10 +94,10 @@ public class TFOD_TeamElement extends LinearOpMode {
      * Initialize the TensorFlow Object Detection processor.
      */
     private void initTfod() {
-        String[] labels = {"blueElement"};
+        String[] labels = {"redElement"};
 
         tfod = new TfodProcessor.Builder()
-                .setModelAssetName("blue.tflite")
+                .setModelAssetName("red.tflite")
                 .setModelLabels(labels)
                 .build();
 
