@@ -135,10 +135,10 @@ public class FieldOriented extends LinearOpMode {
                 separatorServoPower = 0.0;
             }
             if (1<2) {
-                HW.led.setPattern(RevBlinkinLedDriver.BlinkinPattern.GREEN);
+//                HW.led.setPattern(RevBlinkinLedDriver.BlinkinPattern.GREEN);
             }
             else {
-                HW.led.setPattern(RevBlinkinLedDriver.BlinkinPattern.GREEN);
+//                HW.led.setPattern(RevBlinkinLedDriver.BlinkinPattern.GREEN);
             }
             if (gamepad2.dpad_left) {
                 hookServoPower = 1;

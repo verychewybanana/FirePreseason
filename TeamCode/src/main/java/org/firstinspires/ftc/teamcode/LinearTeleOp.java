@@ -164,7 +164,7 @@ public class LinearTeleOp extends LinearOpMode {
             if (leftRightServoPosition < 0.0) leftRightServoPosition = 0.0;
             else if (leftRightServoPosition > 0.27) leftRightServoPosition = 0.27;
 
-            double separatorServoPosition = HW.separatorServo.getPosition();
+//            double separatorServoPosition = HW.separatorServo.getPosition();
 //            if (gamepad2.left_bumper) {
 //                separatorServoPosition = 0.3;
 //            }  else if (gamepad2.right_bumper) {
@@ -205,7 +205,7 @@ public class LinearTeleOp extends LinearOpMode {
             HW.doorServo.setPower(doorServoPower);
 //            HW.boxRightServo.setPower(leftRightServoPower*0.5);
 //            HW.boxLeftServo.setPower(leftRightServoPower*0.45*0.5);
-            HW.separatorServo.setPosition(separatorServoPosition);
+//            HW.separatorServo.setPosition(separatorServoPosition);
             HW.airplaneServo.setPower(airplaneServoPower);
 
             HW.stringMotor.setPower(hangMotorPower);
@@ -231,11 +231,12 @@ public class LinearTeleOp extends LinearOpMode {
 //            telemetry.addData("boxLeftServo pow: ", HW.boxLeftServo.getPower());
 //            telemetry.addData("doorServo power: ", HW.doorServo.getPower());
 //            telemetry.addData("doorServo exists: ", HW.doorServo.getDeviceName());
-            telemetry.addData("light: ", HW.color.getRawLightDetectedMax());
+//            telemetry.addData("light: ", HW.color.getRawLightDetectedMax());
             telemetry.addData("boxLeftServo Position: ", HW.boxLeftServo.getPosition());
             telemetry.addData("boxRightServo Position: ", HW.boxRightServo.getPosition());
             telemetry.addData("boxServos target: ", leftRightServoPosition);
-            telemetry.addData("separatorServo current position: ", HW.separatorServo.getPosition());
+//            telemetry.addData("separatorServo current position: ", HW.separatorServo.getPosition());
+            telemetry.addData("doorServo power: ", HW.doorServo.getPower());
             telemetry.update();
 
         }

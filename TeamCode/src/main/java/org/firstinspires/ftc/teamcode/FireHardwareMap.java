@@ -28,11 +28,11 @@ public class FireHardwareMap {
     public Servo boxLeftServo = null;
     public Servo boxRightServo = null;
     public CRServo doorServo = null;
-    public Servo separatorServo = null;
+//    public Servo separatorServo = null;
     public CRServo airplaneServo = null;
 //    public Servo hookServo = null;
 
-    public RevBlinkinLedDriver led = null;
+//    public RevBlinkinLedDriver led = null;
 
     public ColorRangeSensor color = null;
 
@@ -60,12 +60,12 @@ public class FireHardwareMap {
         stringMotor = HardwareMap.get(DcMotor.class, "stringMotor");
         slideLeftMotor = HardwareMap.get(DcMotor.class, "slideLeftMotor");
         slideRightMotor = HardwareMap.get(DcMotor.class, "slideRightMotor");
-        led = HardwareMap.get(RevBlinkinLedDriver.class, "led");
-        color = HardwareMap.get(ColorRangeSensor.class, "color");
+//        led = HardwareMap.get(RevBlinkinLedDriver.class, "led");
+//        color = HardwareMap.get(ColorRangeSensor.class, "color");
         //Making servo
         boxLeftServo = HardwareMap.get(Servo.class, "leftServo");
         boxRightServo = HardwareMap.get(Servo.class, "rightServo");
-        separatorServo = HardwareMap.get(Servo.class, "separatorServo");
+//        separatorServo = HardwareMap.get(Servo.class, "separatorServo");
         doorServo = HardwareMap.get(CRServo.class, "doorServo");
         airplaneServo = HardwareMap.get(CRServo.class, "airplaneServo");
 //        hookServo = HardwareMap.get(Servo.class, "hookServo");
@@ -88,7 +88,7 @@ public class FireHardwareMap {
 
         boxLeftServo.setDirection(Servo.Direction.FORWARD);
         boxRightServo.setDirection(Servo.Direction.REVERSE);
-        separatorServo.setDirection(Servo.Direction.FORWARD);
+//        separatorServo.setDirection(Servo.Direction.FORWARD);
         airplaneServo.setDirection(CRServo.Direction.REVERSE);
 //        doorServo.setDirection(Servo.Direction.FORWARD);
 //        hookServo.setDirection(Servo.Direction.FORWARD);
@@ -134,7 +134,7 @@ public class FireHardwareMap {
 
         boxLeftServo.setPosition(0.27);
         boxRightServo.setPosition(0.27);
-        separatorServo.setPosition(0.5);
+//        separatorServo.setPosition(0.5);
         doorServo.setPower(0.0);
         airplaneServo.setPower(0.0);
 //        hookServo.setPower(0.0);
