@@ -101,7 +101,7 @@ public class TFOD_WhitePixel extends LinearOpMode {
         visionPortal = VisionPortal.easyCreateWithDefaults(
                 hardwareMap.get(WebcamName.class, "Webcam 1"), tfod);
 
-        tfod.setZoom(2.0);
+        tfod.setZoom(1.0);
 
 
     }   // end method initTfod()
