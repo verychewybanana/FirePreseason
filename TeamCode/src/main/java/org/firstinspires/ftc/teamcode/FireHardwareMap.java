@@ -39,6 +39,8 @@ public class FireHardwareMap {
     public BNO055IMU imu = null;
 
 
+
+
     //Hardware Map object
     com.qualcomm.robotcore.hardware.HardwareMap HardwareMap = null;
 
@@ -70,8 +72,8 @@ public class FireHardwareMap {
         airplaneServo = HardwareMap.get(CRServo.class, "airplaneServo");
 //        hookServo = HardwareMap.get(Servo.class, "hookServo");
 
-        slideLeftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        slideRightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        slideLeftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        slideRightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
 
         //Set up motor direction
@@ -90,7 +92,7 @@ public class FireHardwareMap {
         boxRightServo.setDirection(Servo.Direction.REVERSE);
 //        separatorServo.setDirection(Servo.Direction.FORWARD);
         airplaneServo.setDirection(CRServo.Direction.REVERSE);
-//        doorServo.setDirection(Servo.Direction.FORWARD);
+        doorServo.setDirection(CRServo.Direction.FORWARD);
 //        hookServo.setDirection(Servo.Direction.FORWARD);
 
         //Set motor mode
@@ -100,8 +102,7 @@ public class FireHardwareMap {
         backLeftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 //        intakeMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
-        slideLeftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        slideRightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
 
         //Set zero power behavior
 
@@ -125,15 +126,11 @@ public class FireHardwareMap {
         boxLeftServo.setPosition(Constants.BOXLEFTSERVO_HOMEPOSITION);
         boxRightServo.setPosition(Constants.BOXRIGHTSERVO_HOMEPOSITION);
 
-        slideLeftMotor.setTargetPosition(0);
-        slideRightMotor.setTargetPosition(0);
-
-        slideLeftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        slideRightMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
 
-        boxLeftServo.setPosition(0.27);
-        boxRightServo.setPosition(0.27);
+
+        boxLeftServo.setPosition(0.0);
+        boxRightServo.setPosition(0.0);
 //        separatorServo.setPosition(0.5);
         doorServo.setPower(0.0);
         airplaneServo.setPower(0.0);
