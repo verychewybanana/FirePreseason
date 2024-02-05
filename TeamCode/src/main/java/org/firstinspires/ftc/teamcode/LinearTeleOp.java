@@ -39,6 +39,8 @@ public class LinearTeleOp extends LinearOpMode {
     private FireHardwareMap HW = null;
 
     public final double leftRightServoSpeed = 0.01;
+    public final double backRightMultiplier = 1.1;
+    public boolean isStrafing = false;
 
     @Override
 
@@ -70,6 +72,8 @@ public class LinearTeleOp extends LinearOpMode {
             double axial   = -gamepad1.left_stick_y;  // Note: pushing stick forward gives negative value
             double lateral =  gamepad1.left_stick_x * 1.1;
             double yaw     =  gamepad1.right_stick_x;
+
+//            if (lateral >= 0.5) isStrafing = true;
 
 
             double axial2 =  -gamepad2.left_stick_y;
@@ -183,11 +187,16 @@ public class LinearTeleOp extends LinearOpMode {
 //
             yaw2 = yaw2/1.5;
 
+//            if (isStrafing)
+//                rightBackPower *= backRightMultiplier;
+
+
+
             // Send calculated power to wheels
             HW.frontLeftMotor.setPower(leftFrontPower);
             HW.frontRightMotor.setPower(rightFrontPower);
-            HW.backLeftMotor.setPower(leftBackPower);
-            HW.backRightMotor.setPower(rightBackPower);
+            HW.backLeftMotor.setPower(leftBackPower*1.1);
+            HW.backRightMotor.setPower(rightBackPower*1.1);
             HW.intakeMotor.setPower(intakeWheelPower/1.01);
 //            HW.actuatorMotor.setPower(yaw2);
 
