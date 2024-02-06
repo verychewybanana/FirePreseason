@@ -77,7 +77,7 @@ public class StandardTrackingWheelLocalizer extends ThreeTrackingWheelLocalizer 
         lastEncPositions.add(frontPos);
 
         return Arrays.asList(
-                encoderTicksToInches(leftPos) * X_MULTIPLIER * 1.1,
+                encoderTicksToInches(leftPos) * X_MULTIPLIER * 1.05,
                 encoderTicksToInches(rightPos) * X_MULTIPLIER,
                 encoderTicksToInches(frontPos) * Y_MULTIPLIER
         );
