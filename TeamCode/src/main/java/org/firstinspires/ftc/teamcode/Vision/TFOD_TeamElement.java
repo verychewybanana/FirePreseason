@@ -97,7 +97,7 @@ public class TFOD_TeamElement extends LinearOpMode {
         String[] labels = {"redElement"};
 
         tfod = new TfodProcessor.Builder()
-                .setModelAssetName("red.tflite")
+                .setModelAssetName("updatedRed.tflite")
                 .setModelLabels(labels)
                 .build();
 
