@@ -69,6 +69,7 @@ public class TFOD_TeamElement extends LinearOpMode {
         // Wait for the DS start button to be touched.
         telemetry.addData("DS preview on/off", "3 dots, Camera Stream");
         telemetry.addData(">", "Touch Play to start OpMode");
+        telemetry.addData("model name: ", "updatedRed");
         telemetry.update();
         waitForStart();
 
@@ -94,10 +95,10 @@ public class TFOD_TeamElement extends LinearOpMode {
      * Initialize the TensorFlow Object Detection processor.
      */
     private void initTfod() {
-        String[] labels = {"redElement"};
+        String[] labels = {"blueElement"};
 
         tfod = new TfodProcessor.Builder()
-                .setModelAssetName("updatedRed.tflite")
+                .setModelAssetName("updatedBlue.tflite")
                 .setModelLabels(labels)
                 .build();
 
