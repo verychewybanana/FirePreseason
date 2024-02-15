@@ -61,8 +61,8 @@ public class TFOD_TeamElement extends LinearOpMode {
      */
     private VisionPortal visionPortal;
 
-    public String modelName = "updatedRed.tflite";
-    public String label = "redElement";
+    public String modelName = "updatedBlue.tflite";
+    public String label = "blueElement";
 
     @Override
     public void runOpMode() {
@@ -98,7 +98,7 @@ public class TFOD_TeamElement extends LinearOpMode {
      * Initialize the TensorFlow Object Detection processor.
      */
     private void initTfod() {
-        String[] labels = {"redElement"};
+        String[] labels = {label};
 
         tfod = new TfodProcessor.Builder()
                 .setModelAssetName(modelName)
