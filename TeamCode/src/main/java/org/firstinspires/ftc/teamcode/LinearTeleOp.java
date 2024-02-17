@@ -195,8 +195,8 @@ public class LinearTeleOp extends LinearOpMode {
             // Send calculated power to wheels
             HW.frontLeftMotor.setPower(leftFrontPower);
             HW.frontRightMotor.setPower(rightFrontPower);
-            HW.backLeftMotor.setPower(leftBackPower);
-            HW.backRightMotor.setPower(rightBackPower);
+            HW.backLeftMotor.setPower(leftBackPower*1.1);
+            HW.backRightMotor.setPower(rightBackPower*1.1);
             HW.intakeMotor.setPower(intakeWheelPower/1.01);
 //            HW.actuatorMotor.setPower(yaw2);
 
