@@ -61,6 +61,9 @@ public class TFOD_TeamElement extends LinearOpMode {
      */
     private VisionPortal visionPortal;
 
+    public String modelName = "updatedRed.tflite";
+    public String label = "redElement";
+
     @Override
     public void runOpMode() {
 
@@ -69,7 +72,7 @@ public class TFOD_TeamElement extends LinearOpMode {
         // Wait for the DS start button to be touched.
         telemetry.addData("DS preview on/off", "3 dots, Camera Stream");
         telemetry.addData(">", "Touch Play to start OpMode");
-        telemetry.addData("model name: ", "updatedRed");
+        telemetry.addData("model name: ", modelName);
         telemetry.update();
         waitForStart();
 
@@ -95,11 +98,12 @@ public class TFOD_TeamElement extends LinearOpMode {
      * Initialize the TensorFlow Object Detection processor.
      */
     private void initTfod() {
-        String[] labels = {"blueElement"};
+        String[] labels = {label};
 
         tfod = new TfodProcessor.Builder()
-                .setModelAssetName("updatedBlue.tflite")
+                .setModelAssetName(modelName)
                 .setModelLabels(labels)
+                .setTrackerMinCorrelation(0.9f)
                 .build();
 
         VisionPortal.Builder builder = new VisionPortal.Builder();
