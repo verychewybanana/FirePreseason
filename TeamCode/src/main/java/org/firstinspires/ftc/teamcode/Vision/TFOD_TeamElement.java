@@ -61,8 +61,8 @@ public class TFOD_TeamElement extends LinearOpMode {
      */
     private VisionPortal visionPortal;
 
-    public String modelName = "updatedBlue.tflite";
-    public String label = "blueElement";
+    public String modelName = "updatedRed.tflite";
+    public String label = "redElement";
 
     @Override
     public void runOpMode() {
