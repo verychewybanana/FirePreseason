@@ -52,6 +52,8 @@ public class EmptyHardwareMap {
     private void initialize(com.qualcomm.robotcore.hardware.HardwareMap hwmap){
         HardwareMap = hwmap;
 
+        intakeMotor = HardwareMap.get(DcMotor.class, "intakeMotor");
+        intakeMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
     }
 
 
