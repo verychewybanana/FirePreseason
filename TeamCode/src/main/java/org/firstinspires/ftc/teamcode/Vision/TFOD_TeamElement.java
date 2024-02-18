@@ -114,6 +114,7 @@ public class TFOD_TeamElement extends LinearOpMode {
 
         visionPortal = builder.build();
 
+
         // Create the vision portal the easy way.
 //        visionPortal = VisionPortal.easyCreateWithDefaults(
 //                hardwareMap.get(WebcamName.class, "Webcam 1"), tfod);

@@ -47,6 +47,8 @@ public class LinearTeleOp extends LinearOpMode {
     public void runOpMode() {
         HW = new FireHardwareMap(this.hardwareMap);
 
+        HW.doorServo.setPower(0.0);
+
         //servo = hardwareMap.get(ServoImplEx.class, "left_hand");
         //servo.setPwmRange(range);
 
@@ -123,14 +125,14 @@ public class LinearTeleOp extends LinearOpMode {
 
 
 
-            double doorServoPower;
+            double doorServoPower = HW.doorServo.getPower();
 
             if (gamepad2.b) {
-                doorServoPower = 0.8;
+                doorServoPower = 0.35;
             } else if (gamepad2.a) {
                 doorServoPower = -0.8;
-            } else {
-                doorServoPower = 0;
+//            } else {
+//                doorServoPower = 0.0;
             }
 
             double airplaneServoPower;
