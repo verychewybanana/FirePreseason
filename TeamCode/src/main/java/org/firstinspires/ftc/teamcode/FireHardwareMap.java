@@ -2,6 +2,7 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
+import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
@@ -39,7 +40,7 @@ public class FireHardwareMap {
 
     public BNO055IMU imu = null;
 
-
+public RevBlinkinLedDriver led = null;
 
 
     //Hardware Map object
@@ -63,8 +64,8 @@ public class FireHardwareMap {
         stringMotor = HardwareMap.get(DcMotor.class, "stringMotor");
         slideLeftMotor = HardwareMap.get(DcMotor.class, "slideLeftMotor");
         slideRightMotor = HardwareMap.get(DcMotor.class, "slideRightMotor");
-//        led = HardwareMap.get(RevBlinkinLedDriver.class, "led");
-//        color = HardwareMap.get(ColorRangeSensor.class, "color");
+       led = HardwareMap.get(RevBlinkinLedDriver.class, "led");
+        color = HardwareMap.get(ColorRangeSensor.class, "color");
         //Making servo
         boxLeftServo = HardwareMap.get(Servo.class, "leftServo");
         boxRightServo = HardwareMap.get(Servo.class, "rightServo");

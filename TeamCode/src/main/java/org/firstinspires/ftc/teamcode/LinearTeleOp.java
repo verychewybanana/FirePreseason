@@ -1,4 +1,5 @@
 package org.firstinspires.ftc.teamcode;
+import com.qualcomm.hardware.rev.RevBlinkinLedDriver;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -68,6 +69,26 @@ public class LinearTeleOp extends LinearOpMode {
         while (opModeIsActive()) {
             double max;
             double i =0.0;
+
+            double GRB = 0;
+            // 0 = white 702, 631, 628
+            // 1 = Green 210, 120,170
+            //2 = Purple 290, 287, 360
+            // 3 = Yellow 248, 308, 146
+
+            if (HW.color.green() <= 752 && HW.color.green()>=562 && HW.color.red() <= 681 && HW.color.red() >= 581 && HW.color.blue()<=678 && HW.color.blue()>=578 ){
+                HW.led.setPattern(RevBlinkinLedDriver.BlinkinPattern.WHITE);
+            } if (HW.color.green() <= 260 && HW.color.green()>=160 && HW.color.red() <= 170 && HW.color.red() >= 70 && HW.color.blue()<=170 && HW.color.blue()>=70) {
+                HW.led.setPattern(RevBlinkinLedDriver.BlinkinPattern.GREEN);
+            }
+            if (HW.color.green() <= 340 && HW.color.green()>=240 && HW.color.red() <= 340 && HW.color.red() >= 240 && HW.color.blue()<=410 && HW.color.blue()>=310 ){
+                HW.led.setPattern(RevBlinkinLedDriver.BlinkinPattern.VIOLET);
+            }
+            if (HW.color.green() <= 298 && HW.color.green()>=198 && HW.color.red() <= 358 && HW.color.red() >= 258 && HW.color.blue()<=196 && HW.color.blue()>=96 ){
+                HW.led.setPattern(RevBlinkinLedDriver.BlinkinPattern.YELLOW);
+            }
+
+
 
 
             // POV Mode uses left joystick to go forward & strafe, and right joystick to rotate.
@@ -221,6 +242,11 @@ public class LinearTeleOp extends LinearOpMode {
             telemetry.addData("Status", "Run Time: " + runtime.toString());
             telemetry.addData("Front left/Right", "%4.2f, %4.2f", leftFrontPower, rightFrontPower);
             telemetry.addData("Back  left/Right", "%4.2f, %4.2f", leftBackPower, rightBackPower);
+            telemetry.addData("LED GREEN", HW.color.green());
+            telemetry.addData("LED red", HW.color.red());
+            telemetry.addData("LED blue", HW.color.blue());
+            telemetry.addData("LED ARGB", HW.color.argb());
+
 //            telemetry.addData("Servo  left/Right", "%4.2f, %4.2f", axial2, axial2);
 //            telemetry.addData("Intake Operational: ", HW.intakeMotor.isBusy());
 //            telemetry.addData("Intake Number: ", i);

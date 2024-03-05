@@ -21,6 +21,7 @@ public class redCloseTime extends LinearOpMode {
     FireHardwareMap robot = null;
 
     public boolean recognized;
+    public int num = 0;
 
     @Override
     public void runOpMode() {
@@ -67,8 +68,8 @@ public class redCloseTime extends LinearOpMode {
             sleep(1500);
             recognized = (tfod.getRecognitions().size() > 0) ? true : false;
 
-            if (recognized) {
-                telemetry.addData("Found Right", "");
+            if (num == 0) {
+                telemetry.addData("Going Right", "");
                 telemetry.update();
                 robot.frontLeftMotor.setPower(-0.5);
                 robot.frontRightMotor.setPower(0.5);
@@ -137,7 +138,7 @@ public class redCloseTime extends LinearOpMode {
             sleep(1500);
             recognized = (tfod.getRecognitions().size() > 0) ? true : false;
 
-            if (recognized) {
+            if (num == 1) {
                 telemetry.addData("Found Central", "");
                 telemetry.update();
 //                robot.frontLeftMotor.setPower(0.5);
@@ -193,24 +194,10 @@ public class redCloseTime extends LinearOpMode {
 
             robot.frontLeftMotor.setPower(-0.5);
             robot.frontRightMotor.setPower(0.5);
-            robot.backLeftMotor.setPower(0.5);
+            robot.backLeftMotor.setPower(-0.5);
             robot.backRightMotor.setPower(0.5);
 
-            sleep(2000);
-
-            robot.frontLeftMotor.setPower(0.0);
-            robot.frontRightMotor.setPower(0.0);
-            robot.backLeftMotor.setPower(0.0);
-            robot.backRightMotor.setPower(0.0);
-
-            sleep(200);
-
-            robot.frontLeftMotor.setPower(-0.5);
-            robot.frontRightMotor.setPower(0.5);
-            robot.backLeftMotor.setPower(0.5);
-            robot.backRightMotor.setPower(-0.5);
-
-            sleep(300);
+            sleep(700);
 
             robot.frontLeftMotor.setPower(0.0);
             robot.frontRightMotor.setPower(0.0);

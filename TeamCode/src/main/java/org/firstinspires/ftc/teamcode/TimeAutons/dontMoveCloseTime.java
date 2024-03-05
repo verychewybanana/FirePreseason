@@ -11,7 +11,7 @@ import org.firstinspires.ftc.vision.tfod.TfodProcessor;
 
 import java.util.List;
 
-@Autonomous(name="dontMoveCloseTime", group="TimeAutons")
+@Autonomous(name="dontMoveFarTime", group="TimeAutons")
 public class dontMoveCloseTime extends LinearOpMode {
     FireHardwareMap robot = null;
 
@@ -31,7 +31,7 @@ public class dontMoveCloseTime extends LinearOpMode {
             robot.backLeftMotor.setPower(0.5);
             robot.backRightMotor.setPower(0.5);
 
-            sleep(1500);
+            sleep(1400);
 
             // stop
             robot.frontLeftMotor.setPower(0.0);
