@@ -1,4 +1,5 @@
 package org.firstinspires.ftc.teamcode;
+import com.qualcomm.hardware.rev.RevBlinkinLedDriver;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
@@ -39,11 +40,15 @@ public class LinearTeleOp extends LinearOpMode {
     private FireHardwareMap HW = null;
 
     public final double leftRightServoSpeed = 0.01;
+    public final double backRightMultiplier = 1.1;
+    public boolean isStrafing = false;
 
     @Override
 
     public void runOpMode() {
         HW = new FireHardwareMap(this.hardwareMap);
+
+        HW.doorServo.setPower(0.0);
 
         //servo = hardwareMap.get(ServoImplEx.class, "left_hand");
         //servo.setPwmRange(range);
@@ -65,11 +70,33 @@ public class LinearTeleOp extends LinearOpMode {
             double max;
             double i =0.0;
 
+            double GRB = 0;
+            // 0 = white 702, 631, 628
+            // 1 = Green 210, 120,170
+            //2 = Purple 290, 287, 360
+            // 3 = Yellow 248, 308, 146
+
+            if (HW.color.green() <= 752 && HW.color.green()>=562 && HW.color.red() <= 681 && HW.color.red() >= 581 && HW.color.blue()<=678 && HW.color.blue()>=578 ){
+                HW.led.setPattern(RevBlinkinLedDriver.BlinkinPattern.WHITE);
+            } if (HW.color.green() <= 260 && HW.color.green()>=160 && HW.color.red() <= 170 && HW.color.red() >= 70 && HW.color.blue()<=170 && HW.color.blue()>=70) {
+                HW.led.setPattern(RevBlinkinLedDriver.BlinkinPattern.GREEN);
+            }
+            if (HW.color.green() <= 340 && HW.color.green()>=240 && HW.color.red() <= 340 && HW.color.red() >= 240 && HW.color.blue()<=410 && HW.color.blue()>=310 ){
+                HW.led.setPattern(RevBlinkinLedDriver.BlinkinPattern.VIOLET);
+            }
+            if (HW.color.green() <= 298 && HW.color.green()>=198 && HW.color.red() <= 358 && HW.color.red() >= 258 && HW.color.blue()<=196 && HW.color.blue()>=96 ){
+                HW.led.setPattern(RevBlinkinLedDriver.BlinkinPattern.YELLOW);
+            }
+
+
+
 
             // POV Mode uses left joystick to go forward & strafe, and right joystick to rotate.
             double axial   = -gamepad1.left_stick_y;  // Note: pushing stick forward gives negative value
             double lateral =  gamepad1.left_stick_x * 1.1;
             double yaw     =  gamepad1.right_stick_x;
+
+//            if (lateral >= 0.5) isStrafing = true;
 
 
             double axial2 =  -gamepad2.left_stick_y;
@@ -83,7 +110,7 @@ public class LinearTeleOp extends LinearOpMode {
             double rightFrontPower = axial - lateral - yaw;
             double leftBackPower   = axial - lateral + yaw;
             double rightBackPower  = axial + lateral - yaw;
-
+            double slidePower;
             double intakeWheelPower = gamepad1.right_trigger - gamepad1.left_trigger;
 
             double hangMotorPower = 0;
@@ -117,25 +144,16 @@ public class LinearTeleOp extends LinearOpMode {
             }
 
 
-            if (gamepad2.dpad_down) {
-                HW.slideLeftMotor.setTargetPosition(Constants.slideGroundLevelTicks);
-                HW.slideRightMotor.setTargetPosition(Constants.slideGroundLevelTicks);
-            } else if (gamepad2.dpad_up) {
-                HW.slideLeftMotor.setTargetPosition(Constants.highSlideTicks);
-                HW.slideRightMotor.setTargetPosition(Constants.highSlideTicks);
-            } else if (gamepad2.dpad_right) {
-                HW.slideLeftMotor.setTargetPosition(Constants.lowSlideTicks);
-                HW.slideRightMotor.setTargetPosition(Constants.lowSlideTicks);
-            }
 
-            double doorServoPower;
+
+            double doorServoPower = HW.doorServo.getPower();
 
             if (gamepad2.b) {
-                doorServoPower = 0.8;
+                doorServoPower = 0.35;
             } else if (gamepad2.a) {
                 doorServoPower = -0.8;
-            } else {
-                doorServoPower = 0;
+//            } else {
+//                doorServoPower = 0.0;
             }
 
             double airplaneServoPower;
@@ -149,9 +167,8 @@ public class LinearTeleOp extends LinearOpMode {
             }
 
             double leftRightServoPosition = HW.boxLeftServo.getPosition();
-            // 1.0 is intake pos, 0.5 is scoring pos
             if (gamepad2.right_trigger > 0.1) {
-                leftRightServoPosition = 0.27;
+                leftRightServoPosition = 0.3;
 //                if (leftRightServoPosition > 0.6) leftRightServoPosition = 0.6;
             } else if (gamepad2.left_trigger > 0.1) {
                 leftRightServoPosition = 0.0;
@@ -162,7 +179,7 @@ public class LinearTeleOp extends LinearOpMode {
             }
 
             if (leftRightServoPosition < 0.0) leftRightServoPosition = 0.0;
-            else if (leftRightServoPosition > 0.27) leftRightServoPosition = 0.27;
+            else if (leftRightServoPosition > 0.3) leftRightServoPosition = 0.3;
 
 //            double separatorServoPosition = HW.separatorServo.getPosition();
 //            if (gamepad2.left_bumper) {
@@ -179,7 +196,13 @@ public class LinearTeleOp extends LinearOpMode {
                 hangMotorPower = -0.9;
             }
 
-
+            if (gamepad2.dpad_up) {
+                slidePower = 0.8;
+            } else if (gamepad2.dpad_down) {
+                slidePower = -0.8;
+            } else {
+                slidePower = 0;
+            }
 
 //            axial2 = axial2/1.5;
 //
@@ -187,19 +210,24 @@ public class LinearTeleOp extends LinearOpMode {
 //
             yaw2 = yaw2/1.5;
 
+//            if (isStrafing)
+//                rightBackPower *= backRightMultiplier;
+
+
+
             // Send calculated power to wheels
             HW.frontLeftMotor.setPower(leftFrontPower);
             HW.frontRightMotor.setPower(rightFrontPower);
-            HW.backLeftMotor.setPower(leftBackPower);
-            HW.backRightMotor.setPower(rightBackPower);
+            HW.backLeftMotor.setPower(leftBackPower*1.1);
+            HW.backRightMotor.setPower(rightBackPower*1.1);
             HW.intakeMotor.setPower(intakeWheelPower/1.01);
 //            HW.actuatorMotor.setPower(yaw2);
 
             HW.boxLeftServo.setPosition(leftRightServoPosition);
             HW.boxRightServo.setPosition(leftRightServoPosition);
 
-            HW.slideLeftMotor.setPower(0.5);
-            HW.slideRightMotor.setPower(0.5);
+            HW.slideLeftMotor.setPower(slidePower);
+            HW.slideRightMotor.setPower(slidePower);
 
 
             HW.doorServo.setPower(doorServoPower);
@@ -214,6 +242,11 @@ public class LinearTeleOp extends LinearOpMode {
             telemetry.addData("Status", "Run Time: " + runtime.toString());
             telemetry.addData("Front left/Right", "%4.2f, %4.2f", leftFrontPower, rightFrontPower);
             telemetry.addData("Back  left/Right", "%4.2f, %4.2f", leftBackPower, rightBackPower);
+            telemetry.addData("LED GREEN", HW.color.green());
+            telemetry.addData("LED red", HW.color.red());
+            telemetry.addData("LED blue", HW.color.blue());
+            telemetry.addData("LED ARGB", HW.color.argb());
+
 //            telemetry.addData("Servo  left/Right", "%4.2f, %4.2f", axial2, axial2);
 //            telemetry.addData("Intake Operational: ", HW.intakeMotor.isBusy());
 //            telemetry.addData("Intake Number: ", i);

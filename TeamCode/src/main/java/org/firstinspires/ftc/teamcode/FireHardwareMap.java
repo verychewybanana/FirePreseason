@@ -2,7 +2,9 @@ package org.firstinspires.ftc.teamcode;
 
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
+import com.qualcomm.robotcore.hardware.ColorSensor;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.hardware.CRServo;
@@ -38,6 +40,8 @@ public class FireHardwareMap {
 
     public BNO055IMU imu = null;
 
+public RevBlinkinLedDriver led = null;
+
 
     //Hardware Map object
     com.qualcomm.robotcore.hardware.HardwareMap HardwareMap = null;
@@ -60,8 +64,8 @@ public class FireHardwareMap {
         stringMotor = HardwareMap.get(DcMotor.class, "stringMotor");
         slideLeftMotor = HardwareMap.get(DcMotor.class, "slideLeftMotor");
         slideRightMotor = HardwareMap.get(DcMotor.class, "slideRightMotor");
-//        led = HardwareMap.get(RevBlinkinLedDriver.class, "led");
-//        color = HardwareMap.get(ColorRangeSensor.class, "color");
+       led = HardwareMap.get(RevBlinkinLedDriver.class, "led");
+        color = HardwareMap.get(ColorRangeSensor.class, "color");
         //Making servo
         boxLeftServo = HardwareMap.get(Servo.class, "leftServo");
         boxRightServo = HardwareMap.get(Servo.class, "rightServo");
@@ -70,14 +74,15 @@ public class FireHardwareMap {
         airplaneServo = HardwareMap.get(CRServo.class, "airplaneServo");
 //        hookServo = HardwareMap.get(Servo.class, "hookServo");
 
-        slideLeftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        slideRightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        slideLeftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        slideRightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
 
         //Set up motor direction
         frontRightMotor.setDirection(DcMotor.Direction.FORWARD);
         frontLeftMotor.setDirection(DcMotor.Direction.REVERSE);
         backRightMotor.setDirection(DcMotor.Direction.FORWARD);
+//        backRightMotor.setDirection(DcMotor.Direction.REVERSE);
         backLeftMotor.setDirection(DcMotor.Direction.REVERSE);
 //        intakeMotor.setDirection(DcMotor.Direction.FORWARD);
 
@@ -90,7 +95,7 @@ public class FireHardwareMap {
         boxRightServo.setDirection(Servo.Direction.REVERSE);
 //        separatorServo.setDirection(Servo.Direction.FORWARD);
         airplaneServo.setDirection(CRServo.Direction.REVERSE);
-//        doorServo.setDirection(Servo.Direction.FORWARD);
+        doorServo.setDirection(CRServo.Direction.FORWARD);
 //        hookServo.setDirection(Servo.Direction.FORWARD);
 
         //Set motor mode
@@ -100,8 +105,7 @@ public class FireHardwareMap {
         backLeftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 //        intakeMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
-        slideLeftMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-        slideRightMotor.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
 
         //Set zero power behavior
 
@@ -125,17 +129,13 @@ public class FireHardwareMap {
         boxLeftServo.setPosition(Constants.BOXLEFTSERVO_HOMEPOSITION);
         boxRightServo.setPosition(Constants.BOXRIGHTSERVO_HOMEPOSITION);
 
-        slideLeftMotor.setTargetPosition(0);
-        slideRightMotor.setTargetPosition(0);
-
-        slideLeftMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        slideRightMotor.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
 
-        boxLeftServo.setPosition(0.27);
-        boxRightServo.setPosition(0.27);
+
+        boxLeftServo.setPosition(0.0);
+        boxRightServo.setPosition(0.0);
 //        separatorServo.setPosition(0.5);
-        doorServo.setPower(0.0);
+        doorServo.setPower(0.35);
         airplaneServo.setPower(0.0);
 //        hookServo.setPower(0.0);
 

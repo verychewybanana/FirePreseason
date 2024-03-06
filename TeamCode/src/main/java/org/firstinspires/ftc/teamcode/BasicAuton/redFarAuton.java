@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.BasicAuton;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.FireHardwareMap;
@@ -15,6 +16,7 @@ import org.firstinspires.ftc.vision.tfod.TfodProcessor;
 import java.util.List;
 
 @Autonomous(name="redFarAuton", group="Auton")
+@Disabled
 public class redFarAuton extends LinearOpMode {
     private TfodProcessor tfod;
     private VisionPortal visionPortal;

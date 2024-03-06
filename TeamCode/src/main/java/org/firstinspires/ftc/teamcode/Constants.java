@@ -64,12 +64,13 @@ public final class Constants {
     public static int redSide_blue_min = 40;
     public static int redSide_blue_max = 120;
 
-    public static int final_red_min = 150;
-    public static int final_red_max = 255;
-    public static int final_green_min = 150;
-    public static int final_green_max = 255;
-    public static int final_blue_min = 150;
-    public static int final_blue_max = 255;
+    //rgbs for red element
+    public static int red_red_min = 200;
+    public static int red_red_max = 255;
+    public static int red_green_min = 130;
+    public static int red_green_max = 230;
+    public static int red_blue_min = 165;
+    public static int red_blue_max = 230;
 
     public static final double BOXLEFTSERVO_HOMEPOSITION = 0.6;
     public static final double BOXRIGHTSERVO_HOMEPOSITION = 0.6;
