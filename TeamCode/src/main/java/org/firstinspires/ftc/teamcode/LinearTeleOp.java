@@ -160,7 +160,7 @@ public class LinearTeleOp extends LinearOpMode {
 
             if (gamepad1.y) {
                 airplaneServoPower = 0.8;
-            } else if (gamepad1.a) {
+            } else if (gamepad1.b) {
                 airplaneServoPower = -0.8;
             } else {
                 airplaneServoPower = 0;
