@@ -86,7 +86,7 @@ public RevBlinkinLedDriver led = null;
         backLeftMotor.setDirection(DcMotor.Direction.REVERSE);
 //        intakeMotor.setDirection(DcMotor.Direction.FORWARD);
 
-        slideLeftMotor.setDirection(DcMotor.Direction.FORWARD);
+        slideLeftMotor.setDirection(DcMotor.Direction.REVERSE);
         slideRightMotor.setDirection((DcMotor.Direction.FORWARD));
 
         stringMotor.setDirection(DcMotor.Direction.FORWARD);

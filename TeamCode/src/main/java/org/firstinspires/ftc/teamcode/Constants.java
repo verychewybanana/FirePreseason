@@ -1,7 +1,9 @@
 package org.firstinspires.ftc.teamcode;
 
 
+import com.acmerobotics.dashboard.config.Config;
 
+@Config
 public final class Constants {
     public static final int slideGroundLevelTicks = 0;
     public static final int lowSlideTicks = 1500;
@@ -49,28 +51,13 @@ public final class Constants {
 
     public static String position = "Middle";
 
-
-    public static int blueSidered_min = 110;
-    public static int blueSide_red_max = 200;
-    public static int blueSide_green_min = 50;
-    public static int blueSide_green_max = 210;
-    public static int blueSide_blue_min = 40;
-    public static int blueSide_blue_max = 120;
-
-    public static int redSidered_min = 110;
-    public static int redSide_red_max = 200;
-    public static int redSide_green_min = 50;
-    public static int redSide_green_max = 210;
-    public static int redSide_blue_min = 40;
-    public static int redSide_blue_max = 120;
-
     //rgbs for red element
-    public static int red_red_min = 200;
-    public static int red_red_max = 255;
-    public static int red_green_min = 130;
-    public static int red_green_max = 230;
-    public static int red_blue_min = 165;
-    public static int red_blue_max = 230;
+    public static int redSide_red_min = 70; // 200
+    public static int redSide_red_max = 255;
+    public static int redSide_green_min = 20; //130
+    public static int redSide_green_max = 200;
+    public static int redSide_blue_min = 0; // 165
+    public static int redSide_blue_max = 125;
 
     public static final double BOXLEFTSERVO_HOMEPOSITION = 0.6;
     public static final double BOXRIGHTSERVO_HOMEPOSITION = 0.6;
