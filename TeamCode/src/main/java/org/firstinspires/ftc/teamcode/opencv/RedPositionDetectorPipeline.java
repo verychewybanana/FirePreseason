@@ -15,7 +15,7 @@ import org.opencv.imgproc.Imgproc;
 import org.openftc.easyopencv.OpenCvPipeline;
 
 @Config
-public class PositionDetectorPipeline extends OpenCvPipeline {
+public class RedPositionDetectorPipeline extends OpenCvPipeline {
 
     Telemetry telemetry;
 
@@ -31,8 +31,8 @@ public class PositionDetectorPipeline extends OpenCvPipeline {
     public static int blue_min = Constants.redSide_blue_min;
     public static int blue_max = Constants.redSide_blue_max;
 
-    public static int leftDivision = 106;
-    public static int rightDivision = 213;
+    public static int leftDivision = 160; //106 old
+    public static int rightDivision = 319; //213 old
     public static int topY = 240;
     public static int maxX = 320;
     public String value = "";
@@ -45,12 +45,13 @@ public class PositionDetectorPipeline extends OpenCvPipeline {
     /**
      * This will store the value of the position of the Scoring Element to know where to place it
      */
-    private volatile Position position = Position.Right;
+//    private volatile Position position = Position.Right;
+    private volatile Position position = Position.Left;
 
     public enum Position {
         Left("Left"),
-        Center("Center"),
-        Right("Right");
+        Center("Center");
+//        Right("Right");
 
         public String val;
 
@@ -61,7 +62,7 @@ public class PositionDetectorPipeline extends OpenCvPipeline {
 
 
 
-    public PositionDetectorPipeline(Telemetry telemetry) {
+    public RedPositionDetectorPipeline(Telemetry telemetry) {
         this.telemetry = telemetry;
     }
 
@@ -111,40 +112,49 @@ public class PositionDetectorPipeline extends OpenCvPipeline {
         //TODO: Declare variables
         Rect left = new Rect(new Point(0, 0), new Point(leftDivision, topY));
         Rect center = new Rect(new Point(leftDivision, 0), new Point(rightDivision, topY));
-        Rect right = new Rect(new Point(rightDivision, 0), new Point(maxX, topY));
+//        Rect right = new Rect(new Point(rightDivision, 0), new Point(maxX, topY));
 
 
         // Draw a RED Rectangle around each potential area of the item
         //IS WHITE BECAUSE IMAGE IS TURNED INTO 1 STREAM GRAYSCALE
         Imgproc.rectangle(mask, left, new Scalar(255, 255, 255), 5);
         Imgproc.rectangle(mask, center, new Scalar(255, 255, 255), 5);
-        Imgproc.rectangle(mask, right, new Scalar(255, 255, 255), 5);
+//        Imgproc.rectangle(mask, right, new Scalar(255, 255, 255), 5);
 
         // Study each rectangle separately
         Mat leftStudy = new Mat(mask, left);
         Mat centerStudy = new Mat(mask, center);
-        Mat rightStudy = new Mat(mask, right);
+//        Mat rightStudy = new Mat(mask, right);
 
         //UP TO HERE IS GOOD
 
 
         double leftDensity = (double) Core.countNonZero(leftStudy)/(leftStudy.rows()*leftStudy.cols());
         double centerDensity = (double) Core.countNonZero(centerStudy)/(centerStudy.rows()*centerStudy.cols());
-        double rightDensity = (double) Core.countNonZero(rightStudy)/(rightStudy.rows()*rightStudy.cols());
+//        double rightDensity = (double) Core.countNonZero(rightStudy)/(rightStudy.rows()*rightStudy.cols());
 
 
 
         Position curPos;
 
-        if (leftDensity > centerDensity && leftDensity > rightDensity){
+//        if (leftDensity > centerDensity && leftDensity > rightDensity){
+//            curPos = Position.Left;
+//        }
+//        else if (centerDensity > rightDensity){
+//            curPos = Position.Center;
+//        }
+//        else{
+//            curPos = Position.Right;
+//        }
+
+        if (leftDensity >= centerDensity){
             curPos = Position.Left;
         }
-        else if (centerDensity > rightDensity){
+        else {
             curPos = Position.Center;
         }
-        else{
-            curPos = Position.Right;
-        }
+
+
         telemetry.addData("Position Found", curPos.val);
         Constants.position = curPos.val;
         value = curPos.val;

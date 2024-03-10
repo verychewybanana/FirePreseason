@@ -10,7 +10,7 @@ import org.openftc.easyopencv.OpenCvCameraRotation;
 import org.openftc.easyopencv.OpenCvInternalCamera;
 import org.openftc.easyopencv.OpenCvWebcam;
 
-public class PositionDetector {
+public class RedPositionDetector {
     /**
      * This connects to the phone's camera to capture an image of the rings.
      * <p>
@@ -20,9 +20,9 @@ public class PositionDetector {
      */
     private OpenCvWebcam camera;
 
-    private PositionDetectorPipeline pipeline;
+    private RedPositionDetectorPipeline pipeline;
 
-    public PositionDetector(HardwareMap hardwareMap, Telemetry telemetry) {
+    public RedPositionDetector(HardwareMap hardwareMap, Telemetry telemetry) {
         init(hardwareMap, telemetry);
     }
 
@@ -48,7 +48,7 @@ public class PositionDetector {
 
 
 
-        pipeline = new PositionDetectorPipeline(telemetry);
+        pipeline = new RedPositionDetectorPipeline(telemetry);
         camera.setPipeline(pipeline);
 
         camera.setViewportRenderingPolicy(OpenCvCamera.ViewportRenderingPolicy.OPTIMIZE_VIEW);
@@ -73,7 +73,7 @@ public class PositionDetector {
     }
 
     public String getValue(){
-        PositionDetectorPipeline.Position pos = getPosition();
+        RedPositionDetectorPipeline.Position pos = getPosition();
         return pipeline.getValue();
     }
 
@@ -81,7 +81,7 @@ public class PositionDetector {
         camera.stopStreaming();
     }
 
-    public PositionDetectorPipeline.Position getPosition() {
+    public RedPositionDetectorPipeline.Position getPosition() {
         return pipeline.getPosition();
     }
 }
