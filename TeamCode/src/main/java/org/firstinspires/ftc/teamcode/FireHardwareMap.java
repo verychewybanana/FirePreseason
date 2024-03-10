@@ -40,6 +40,9 @@ public class FireHardwareMap {
 
     public BNO055IMU imu = null;
 
+    public Servo leftHook = null;
+
+    public Servo rightHook = null;
 public RevBlinkinLedDriver led = null;
 
 
@@ -69,6 +72,9 @@ public RevBlinkinLedDriver led = null;
         //Making servo
         boxLeftServo = HardwareMap.get(Servo.class, "leftServo");
         boxRightServo = HardwareMap.get(Servo.class, "rightServo");
+
+        leftHook = HardwareMap.get(Servo.class, "leftHook");
+        rightHook = HardwareMap.get(Servo.class, "rightHook");
 //        separatorServo = HardwareMap.get(Servo.class, "separatorServo");
         doorServo = HardwareMap.get(CRServo.class, "doorServo");
         airplaneServo = HardwareMap.get(CRServo.class, "airplaneServo");

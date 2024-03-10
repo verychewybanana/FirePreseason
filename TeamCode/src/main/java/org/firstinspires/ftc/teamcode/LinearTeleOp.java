@@ -69,6 +69,7 @@ public class LinearTeleOp extends LinearOpMode {
         while (opModeIsActive()) {
             double max;
             double i =0.0;
+            int hook = 0;
 
             double GRB = 0;
             // 0 = white 702, 631, 628
@@ -144,6 +145,19 @@ public class LinearTeleOp extends LinearOpMode {
             }
 
 
+            //hook servo falke CR
+            if(gamepad1.left_bumper) {
+                if (gamepad1.dpad_left) {
+                    hook = 1;
+                } else if (gamepad1.dpad_right) {
+                    hook = -1;
+                } else {
+                    hook = 0;
+                }
+                HW.leftHook.setPosition(HW.leftHook.getPosition() + hook);
+                HW.rightHook.setPosition(HW.rightHook.getPosition() - hook);
+
+           }
 
 
             double doorServoPower = HW.doorServo.getPower();
