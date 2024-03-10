@@ -24,12 +24,12 @@ public class PositionDetectorPipeline extends OpenCvPipeline {
      */
     static final int CAMERA_WIDTH = 320;
 
-    public static int red_min = Constants.red_red_min;
-    public static int red_max = Constants.red_red_max;
-    public static int green_min = Constants.red_green_min;
-    public static int green_max = Constants.red_green_max;
-    public static int blue_min = Constants.red_blue_min;
-    public static int blue_max = Constants.red_blue_max;
+    public static int red_min = Constants.redSide_red_min;
+    public static int red_max = Constants.redSide_red_max;
+    public static int green_min = Constants.redSide_green_min;
+    public static int green_max = Constants.redSide_green_max;
+    public static int blue_min = Constants.redSide_blue_min;
+    public static int blue_max = Constants.redSide_blue_max;
 
     public static int leftDivision = 106;
     public static int rightDivision = 213;
@@ -67,7 +67,9 @@ public class PositionDetectorPipeline extends OpenCvPipeline {
 
     // TODO: Tune the minimum and maximum detection values
     static final Scalar DETECTION_MINIMUM = new Scalar (red_min, green_min, blue_min);
+//    static final Scalar DETECTION_MINIMUM = new Scalar (blue_min, green_min, red_min);
     static final Scalar DETECTION_MAXIMUM = new Scalar (red_max, green_max, blue_max);
+//    static final Scalar DETECTION_MAXIMUM = new Scalar (blue_max, green_max, red_max);
 
     //Stores the frame after it has been converted
     Mat yCrCb = new Mat();
@@ -99,7 +101,7 @@ public class PositionDetectorPipeline extends OpenCvPipeline {
         // Creates a mask mat, which finds all the images within the range of colors. The mat
         // divides the data into black and white, with white being the pixels in the threshold
         Mat mask = new Mat(yCrCb.rows(), yCrCb.cols(), CvType.CV_8UC1);
-        Core.inRange(yCrCb, new Scalar (red_min, green_min, blue_min), new Scalar (red_max, green_max, blue_max), mask);
+        Core.inRange(yCrCb, DETECTION_MINIMUM, DETECTION_MAXIMUM, mask);
 
         // Use a Gaussian Blur to reduce noise in the frame, such as shadows and lighting, and just
         // make calculations easier.
