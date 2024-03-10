@@ -1,12 +1,11 @@
 package org.firstinspires.ftc.teamcode.BasicAuton;
 
 import com.acmerobotics.dashboard.config.Config;
-import com.qualcomm.hardware.rev.RevBlinkinLedDriver;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.FireHardwareMap;
-import org.firstinspires.ftc.teamcode.opencv.PositionDetector;
+import org.firstinspires.ftc.teamcode.opencv.RedPositionDetector;
 
 @Autonomous(name="CV Test", group="Auton")
 @Config
@@ -17,7 +16,7 @@ public class CVTest extends LinearOpMode {
     @Override
     public void runOpMode() {
         robot = new FireHardwareMap(this.hardwareMap);
-        PositionDetector pd = new PositionDetector(hardwareMap, telemetry);
+        RedPositionDetector pd = new RedPositionDetector(hardwareMap, telemetry);
         pd.startStreaming();
         int count = 0;
 
