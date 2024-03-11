@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.FireHardwareMap;
+import org.firstinspires.ftc.teamcode.opencv.BluePositionDetector;
 import org.firstinspires.ftc.teamcode.opencv.RedPositionDetector;
 
 @Autonomous(name="CV Test", group="Auton")
@@ -16,7 +17,7 @@ public class CVTest extends LinearOpMode {
     @Override
     public void runOpMode() {
         robot = new FireHardwareMap(this.hardwareMap);
-        RedPositionDetector pd = new RedPositionDetector(hardwareMap, telemetry);
+        BluePositionDetector pd = new BluePositionDetector(hardwareMap, telemetry);
         pd.startStreaming();
         int count = 0;
 
