@@ -59,6 +59,14 @@ public final class Constants {
     public static int redSide_blue_min = 0; // 165
     public static int redSide_blue_max = 115;
 
+    public static int blueSide_red_min = 50;
+    public static int blueSide_red_max = 150; //50,59
+    public static int blueSide_green_min = 0;
+    public static int blueSide_green_max = 100; //184,190
+    public static int blueSide_blue_min = 0;
+    public static int blueSide_blue_max = 160; //255,245
+
+
     public static final double BOXLEFTSERVO_HOMEPOSITION = 0.6;
     public static final double BOXRIGHTSERVO_HOMEPOSITION = 0.6;
 
