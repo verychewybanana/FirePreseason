@@ -1,4 +1,4 @@
-package org.firstinspires.ftc.teamcode.opencv;
+package org.firstinspires.ftc.teamcode.RRAutons.opencv;
 
 import com.acmerobotics.dashboard.config.Config;
 
@@ -15,7 +15,7 @@ import org.opencv.imgproc.Imgproc;
 import org.openftc.easyopencv.OpenCvPipeline;
 
 @Config
-public class RedPositionDetectorPipeline extends OpenCvPipeline {
+public class BluePositionDetectorPipeline extends OpenCvPipeline {
 
     Telemetry telemetry;
 
@@ -24,12 +24,12 @@ public class RedPositionDetectorPipeline extends OpenCvPipeline {
      */
     static final int CAMERA_WIDTH = 320;
 
-    public static int red_min = Constants.redSide_red_min;
-    public static int red_max = Constants.redSide_red_max;
-    public static int green_min = Constants.redSide_green_min;
-    public static int green_max = Constants.redSide_green_max;
-    public static int blue_min = Constants.redSide_blue_min;
-    public static int blue_max = Constants.redSide_blue_max;
+    public static int red_min = Constants.blueSide_red_min;
+    public static int red_max = Constants.blueSide_red_max;
+    public static int green_min = Constants.blueSide_green_min;
+    public static int green_max = Constants.blueSide_green_max;
+    public static int blue_min = Constants.blueSide_blue_min;
+    public static int blue_max = Constants.blueSide_blue_max;
 
     public static int leftDivision = 160; //106 old
     public static int rightDivision = 319; //213 old
@@ -65,7 +65,7 @@ public class RedPositionDetectorPipeline extends OpenCvPipeline {
 
 
 
-    public RedPositionDetectorPipeline(Telemetry telemetry) {
+    public BluePositionDetectorPipeline(Telemetry telemetry) {
         this.telemetry = telemetry;
     }
 
@@ -139,8 +139,6 @@ public class RedPositionDetectorPipeline extends OpenCvPipeline {
         leftValue = Core.countNonZero(leftStudy);
         rightValue = Core.countNonZero(centerStudy);
 
-
-
         Position curPos;
 
 //        if (leftDensity > centerDensity && leftDensity > rightDensity){
@@ -159,6 +157,9 @@ public class RedPositionDetectorPipeline extends OpenCvPipeline {
         else {
             curPos = Position.Center;
         }
+
+        leftValue = Core.countNonZero(leftStudy);
+        rightValue = Core.countNonZero(centerStudy);
 
 
         telemetry.addData("Position Found", curPos.val);

@@ -1,12 +1,11 @@
-package org.firstinspires.ftc.teamcode.BasicAuton;
+package org.firstinspires.ftc.teamcode.RRAutons;
 
 import com.acmerobotics.dashboard.config.Config;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.FireHardwareMap;
-import org.firstinspires.ftc.teamcode.opencv.BluePositionDetector;
-import org.firstinspires.ftc.teamcode.opencv.RedPositionDetector;
+import org.firstinspires.ftc.teamcode.RRAutons.opencv.RedPositionDetector;
 
 @Autonomous(name="CV Test", group="Auton")
 @Config

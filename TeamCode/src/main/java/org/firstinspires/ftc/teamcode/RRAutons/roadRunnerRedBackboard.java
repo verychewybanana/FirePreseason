@@ -1,23 +1,14 @@
-package org.firstinspires.ftc.teamcode.BasicAuton;
-
-import android.util.Size;
+package org.firstinspires.ftc.teamcode.RRAutons;
 
 import com.acmerobotics.roadrunner.geometry.Pose2d;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
-import org.firstinspires.ftc.robotcore.external.tfod.Recognition;
-import org.firstinspires.ftc.teamcode.EmptyHardwareMap;
 import org.firstinspires.ftc.teamcode.FireHardwareMap;
-import org.firstinspires.ftc.teamcode.opencv.RedPositionDetector;
-import org.firstinspires.ftc.vision.VisionPortal;
-import org.firstinspires.ftc.vision.tfod.TfodProcessor;
+import org.firstinspires.ftc.teamcode.RRAutons.opencv.RedPositionDetector;
 import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
 import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequence;
 
-import java.util.List;
 @Autonomous(name="roadRunnerRedBackboard", group="Auton")
 public class roadRunnerRedBackboard extends LinearOpMode {
 
@@ -46,32 +37,30 @@ public class roadRunnerRedBackboard extends LinearOpMode {
                 .build();
 
         TrajectorySequence parkFromRight = drive.trajectorySequenceBuilder(navigateRight.end())
-                .strafeRight(30.0)
+                .strafeRight(20.0)
                 .turn(Math.toRadians(90))
                 .build();
 
         TrajectorySequence navigateMiddle = drive.trajectorySequenceBuilder(navigateRight.end())
                 .waitSeconds(0.2)
                 .strafeLeft(4.0)
-                .forward(5.0)
+                .forward(10.0)
                 .build();
 
         TrajectorySequence parkFromMiddle = drive.trajectorySequenceBuilder(navigateMiddle.end())
                 .waitSeconds(0.2)
-                .strafeRight(35.0)
+                .strafeRight(25.0)
                 .turn(Math.toRadians(90))
                 .build();
 
         TrajectorySequence navigateLeft = drive.trajectorySequenceBuilder(navigateMiddle.end())
-                .waitSeconds(0.2)
-                .strafeLeft(5.0)
-                .back(2.0)
+                .forward(6.0)
+                .turn(Math.toRadians(90))
                 .build();
 
         TrajectorySequence parkFromLeft = drive.trajectorySequenceBuilder(navigateLeft.end())
                 .waitSeconds(0.2)
-                .strafeRight(40.0)
-                .turn(Math.toRadians(90))
+                .back(25.0)
                 .build();
 
         waitForStart();
@@ -92,7 +81,7 @@ public class roadRunnerRedBackboard extends LinearOpMode {
                 sleep(1500);
                 robot.intakeMotor.setPower(0.0);
                 sleep(500);
-//                drive.followTrajectorySequence(parkFromRight);
+                drive.followTrajectorySequence(parkFromRight);
                 requestOpModeStop();
             }
 
@@ -108,7 +97,7 @@ public class roadRunnerRedBackboard extends LinearOpMode {
                 sleep(1500);
                 robot.intakeMotor.setPower(0.0);
                 sleep(500);
-//                drive.followTrajectorySequence(parkFromMiddle);
+                drive.followTrajectorySequence(parkFromMiddle);
                 requestOpModeStop();
             }
 
@@ -121,7 +110,7 @@ public class roadRunnerRedBackboard extends LinearOpMode {
                 sleep(1500);
                 robot.intakeMotor.setPower(0.0);
                 sleep(500);
-//                drive.followTrajectorySequence(parkFromLeft);
+                drive.followTrajectorySequence(parkFromLeft);
                 requestOpModeStop();
             }
 
