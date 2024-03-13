@@ -37,6 +37,9 @@ public class RedPositionDetectorPipeline extends OpenCvPipeline {
     public static int maxX = 320;
     public String value = "";
 
+    public int leftValue = 0;
+    public int rightValue = 0;
+
     /**
      * The Divider is used to divide the portion of the area considered and not considered
      */
@@ -133,6 +136,9 @@ public class RedPositionDetectorPipeline extends OpenCvPipeline {
         double centerDensity = (double) Core.countNonZero(centerStudy)/(centerStudy.rows()*centerStudy.cols());
 //        double rightDensity = (double) Core.countNonZero(rightStudy)/(rightStudy.rows()*rightStudy.cols());
 
+        leftValue = Core.countNonZero(leftStudy);
+        rightValue = Core.countNonZero(centerStudy);
+
 
 
         Position curPos;
@@ -164,6 +170,14 @@ public class RedPositionDetectorPipeline extends OpenCvPipeline {
 
     public String getValue(){
         return value;
+    }
+
+    public int getLeftValue() {
+        return leftValue;
+    }
+
+    public int getRightValue() {
+        return rightValue;
     }
 
     public Position getPosition() {

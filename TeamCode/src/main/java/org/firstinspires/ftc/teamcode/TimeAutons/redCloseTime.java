@@ -3,6 +3,7 @@ package org.firstinspires.ftc.teamcode.TimeAutons;
 import android.util.Size;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
+import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
@@ -15,6 +16,7 @@ import org.firstinspires.ftc.vision.tfod.TfodProcessor;
 import java.util.List;
 
 @Autonomous(name="redCloseAutonTime", group="TimeAutons")
+@Disabled
 public class redCloseTime extends LinearOpMode {
     public TfodProcessor tfod;
     public VisionPortal visionPortal;

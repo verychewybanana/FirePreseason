@@ -52,12 +52,12 @@ public final class Constants {
     public static String position = "Middle";
 
     //rgbs for red element
-    public static int redSide_red_min = 70; // 200
-    public static int redSide_red_max = 155;
-    public static int redSide_green_min = 0; //130
-    public static int redSide_green_max = 205;
-    public static int redSide_blue_min = 0; // 165
-    public static int redSide_blue_max = 115;
+    public static int redSide_red_min = 45; // 60   45
+    public static int redSide_red_max = 155; // 155   155
+    public static int redSide_green_min = 0; // 0
+    public static int redSide_green_max = 195; // 205   195
+    public static int redSide_blue_min = 90; // 0
+    public static int redSide_blue_max = 125; // 115   135
 
     public static int blueSide_red_min = 50; // 50 old
     public static int blueSide_red_max = 150; //150 old

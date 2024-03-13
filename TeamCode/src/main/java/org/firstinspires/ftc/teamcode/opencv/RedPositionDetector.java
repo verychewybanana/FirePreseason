@@ -81,6 +81,18 @@ public class RedPositionDetector {
         camera.stopStreaming();
     }
 
+    public int getLeftValue() {
+        return pipeline.getLeftValue();
+    }
+
+    public int getRightValue() {
+        return pipeline.getRightValue();
+    }
+
+    public int getTotalPixelValues() {
+        return getLeftValue() + getRightValue();
+    }
+
     public RedPositionDetectorPipeline.Position getPosition() {
         return pipeline.getPosition();
     }

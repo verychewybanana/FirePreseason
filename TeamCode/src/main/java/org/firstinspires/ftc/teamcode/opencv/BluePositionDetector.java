@@ -34,19 +34,12 @@ public class BluePositionDetector {
      */
     public void init(HardwareMap hardwareMap, Telemetry telemetry) {
 
-
-
-
         int cameraMonitorViewId = hardwareMap.appContext.getResources().getIdentifier(
                 "cameraMonitorViewId",
                 "id",
                 hardwareMap.appContext.getPackageName()
         );
         camera = OpenCvCameraFactory.getInstance().createWebcam(hardwareMap.get(WebcamName.class, "Webcam 1"), cameraMonitorViewId);
-
-
-
-
 
         pipeline = new BluePositionDetectorPipeline(telemetry);
         camera.setPipeline(pipeline);
@@ -73,8 +66,20 @@ public class BluePositionDetector {
     }
 
     public String getValue(){
-        BluePositionDetectorPipeline.Position pos = getPosition();
+//        BluePositionDetectorPipeline.Position pos = getPosition();
         return pipeline.getValue();
+    }
+
+    public int getLeftValue() {
+        return pipeline.getLeftValue();
+    }
+
+    public int getRightValue() {
+        return pipeline.getRightValue();
+    }
+
+    public int getTotalPixelValues() {
+        return getLeftValue() + getRightValue();
     }
 
     public void stopStreaming() {

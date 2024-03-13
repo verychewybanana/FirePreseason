@@ -11,24 +11,25 @@ import org.firstinspires.ftc.teamcode.opencv.RedPositionDetector;
 @Autonomous(name="CV Test", group="Auton")
 @Config
 public class CVTest extends LinearOpMode {
-
     FireHardwareMap robot = null;
 
     @Override
     public void runOpMode() {
         robot = new FireHardwareMap(this.hardwareMap);
-        BluePositionDetector pd = new BluePositionDetector(hardwareMap, telemetry);
+        RedPositionDetector pd = new RedPositionDetector(hardwareMap, telemetry);
         pd.startStreaming();
-        int count = 0;
+//        int count = 0;
 
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
         while (opModeIsActive()) {
 //            robot.led.setPattern(RevBlinkinLedDriver.BlinkinPattern.WHITE);
-            pd.getPosition();
-            telemetry.addData("Here", pd.getValue());
-            telemetry.addData("count", count);
-            count++;
+//            pd.getPosition();
+            telemetry.addData("Left Pixels: ", pd.getLeftValue());
+            telemetry.addData("Right Pixels: ", pd.getRightValue());
+            telemetry.addData("Total Pixels: ", pd.getTotalPixelValues());
+//            telemetry.addData("count", count);
+//            count++;
             sleep(100);
             telemetry.update();
 
