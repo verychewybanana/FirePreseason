@@ -1,6 +1,7 @@
 package org.firstinspires.ftc.teamcode.RRAutons;
 
 import com.acmerobotics.dashboard.config.Config;
+import com.qualcomm.hardware.rev.RevBlinkinLedDriver;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
@@ -18,18 +19,28 @@ public class CVTest extends LinearOpMode {
         RedPositionDetector pd = new RedPositionDetector(hardwareMap, telemetry);
         pd.startStreaming();
 //        int count = 0;
-
+        int x;
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
         while (opModeIsActive()) {
-//            robot.led.setPattern(RevBlinkinLedDriver.BlinkinPattern.WHITE);
+            robot.led.setPattern(RevBlinkinLedDriver.BlinkinPattern.WHITE);
 //            pd.getPosition();
             telemetry.addData("Left Pixels: ", pd.getLeftValue());
             telemetry.addData("Right Pixels: ", pd.getRightValue());
             telemetry.addData("Total Pixels: ", pd.getTotalPixelValues());
+            if (pd.getLeftValue() - pd.getRightValue() > 1000){
+                x = 0;
+            }
+            else if(pd.getRightValue()-pd.getLeftValue() > 1000){
+                x = 1;
+            }
+            else{
+                x = 2;
+            }
+            telemetry.addData("Zone: ", x);
 //            telemetry.addData("count", count);
 //            count++;
-            sleep(100);
+
             telemetry.update();
 
 //CVVVVVVV

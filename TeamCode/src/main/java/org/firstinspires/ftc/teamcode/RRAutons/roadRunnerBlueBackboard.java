@@ -10,7 +10,7 @@ import org.firstinspires.ftc.teamcode.RRAutons.opencv.RedPositionDetector;
 import org.firstinspires.ftc.teamcode.drive.SampleMecanumDrive;
 import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequence;
 
-@Autonomous(name="roadRunnerRedBackboard", group="Auton")
+@Autonomous(name="roadRunnerBlueBackboard", group="Auton")
 public class roadRunnerBlueBackboard extends LinearOpMode {
 
 
