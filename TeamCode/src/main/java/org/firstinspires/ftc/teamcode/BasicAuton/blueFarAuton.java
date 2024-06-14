@@ -1,3 +1,4 @@
+/*
 package org.firstinspires.ftc.teamcode.BasicAuton;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
@@ -152,3 +153,4 @@ public class blueFarAuton extends LinearOpMode {
         return 0;
     }
 }
+*/

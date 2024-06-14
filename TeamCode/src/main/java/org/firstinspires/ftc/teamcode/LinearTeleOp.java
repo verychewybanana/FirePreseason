@@ -4,8 +4,8 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
-@TeleOp(name="TeleOp", group="Linear OpMode")
-public class fireTeleOp {
+@TeleOp(name="Robot Oriented TeleOpp", group="Linear Opmode")
+public class LinearTeleOp extends LinearOpMode {
     /**
      * Hardware map
      * Front left and right motor
@@ -16,7 +16,7 @@ public class fireTeleOp {
     private FireHardwareMap HW = null;
 
     @Override
-    public fireTeleOp() {
+    public void runOpMode() {
         HW = new FireHardwareMap(this.hardwareMap); //instantiate hardware map
 
         waitForStart(); //waits til the user presses start
@@ -103,7 +103,7 @@ public class fireTeleOp {
 
 
 
-/**
+/*
 
 package org.firstinspires.ftc.teamcode;
 import com.qualcomm.hardware.rev.RevBlinkinLedDriver;
@@ -397,4 +397,4 @@ public class LinearTeleOp extends LinearOpMode {
         }
     }
 }
-**/
+*/

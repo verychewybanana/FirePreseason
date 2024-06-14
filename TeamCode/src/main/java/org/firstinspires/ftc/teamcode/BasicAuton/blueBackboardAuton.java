@@ -1,4 +1,6 @@
+/*
 package org.firstinspires.ftc.teamcode.BasicAuton;
+
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
@@ -179,3 +181,4 @@ public class blueBackboardAuton extends LinearOpMode {
         return 0;
     }
 }
+*/

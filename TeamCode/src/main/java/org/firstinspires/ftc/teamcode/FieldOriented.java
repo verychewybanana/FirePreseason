@@ -196,7 +196,6 @@ public class FieldOriented extends LinearOpMode {
 //            telemetry.addData("backLeftMotor Operational: ", HW.backLeftMotor.isBusy());
 //            telemetry.addData("Current backRightMotor Encoder Position: ", HW.backRightMotor.getCurrentPosition());
 //            telemetry.addData("backRightMotor Operational: ", HW.backRightMotor.isBusy());
-            telemetry.addData("slideLeftMotorTicks target ", HW.slideLeftMotor.getTargetPosition());
 //            telemetry.addData("boxLeftServo pow: ", HW.boxLeftServo.getPower());
 //            telemetry.addData("doorServo power: ", HW.doorServo.getPower());
 //            telemetry.addData("doorServo exists: ", HW.doorServo.getDeviceName());
