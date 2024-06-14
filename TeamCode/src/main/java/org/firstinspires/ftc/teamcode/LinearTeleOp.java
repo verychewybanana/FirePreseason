@@ -4,6 +4,113 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
+@TeleOp(name="TeleOp", group="Linear OpMode")
+public class fireTeleOp {
+    /**
+     * Hardware map
+     * Front left and right motor
+     * Back left and right motor
+     * Linear actuator motor
+     * Claw servo
+     * **/
+    private FireHardwareMap HW = null;
+
+    @Override
+    public fireTeleOp() {
+        HW = new FireHardwareMap(this.hardwareMap); //instantiate hardware map
+
+        waitForStart(); //waits til the user presses start
+
+        while(opModeIsActive()) {
+            double axial = -gamepad1.left_stick_y; //this is how far forward/backward the left stick is
+            double lateral = gamepad1.left_stick_x; //this is how far left/right the left stick is
+            double yaw = gamepad1.right_stick_x; //this is for turning left or right
+            double boost = 0.0;
+
+
+
+            //sets the power for each motor
+            double frontLeftPower = axial + lateral + yaw;
+            double frontRightPower = axial - lateral - yaw;
+            double backLeftPower = axial - lateral + yaw;
+            double backRightPower = axial + lateral - yaw;
+
+            double linearActuatorPower = 0.0;
+            double clawServoPower = 0.0;
+
+            //set the max constant
+            max = Math.max(Math.abs(leftFrontPower), Math.abs(rightFrontPower));
+            max = Math.max(max, Math.abs(leftBackPower));
+            max = Math.max(max, Math.abs(rightBackPower));
+            boost = gamepad1.right_trigger; //vroom vroom speed
+
+            if (max > 1) {
+                frontLeftPower/=max;
+                frontRightPower/=max;
+                backLeftPower/=max;
+                backRightPower/=max;
+
+                boost/=max;
+                linearActuatorPower/=max;
+                clawServoPower/=max;
+            }
+
+            if (gamepad1.b) {
+                boost = boost;
+            }
+
+            else {
+                frontLeftPower/=2;
+                frontRightPower/=2;
+                backLeftPower/=2;
+                backRightPower/=2;
+            }
+
+            if(gamepad1.left_bumper) {
+                if (gamepad1.dpad_up) {
+                    linearActuatorPower = 1;
+                } else if (gamepad1.dpad_down) {
+                    linearActuatorPower = -1;
+                } else {
+                    linearActuatorPower = 0;
+                }
+            }
+
+            if (gamepad1.right_bumper) {
+                if (gamepad1.dpad_left) {
+                    clawServoPower = 1;
+                }
+                else if (gamepad1.dpad_right) {
+                    clawServoPower = -1;
+                }
+                else {
+                    clawServoPower = 0;
+                }
+            }
+
+            HW.frontLeftMotor.setPower(frontLeftPower);
+            HW.frontRightMotor.setPower(frontLeftPower);
+            HW.backLeftMotor.setPower(backLeftPower);
+            HW.backRightMotor.setPower(backRightPower);
+
+            HW.clawServo.setPower(clawServoPower);
+            HW.linearActuatorMotor.setPower(linearActuatorPower);
+
+        }
+    }
+}
+
+
+
+
+/**
+
+package org.firstinspires.ftc.teamcode;
+import com.qualcomm.hardware.rev.RevBlinkinLedDriver;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
+import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.util.ElapsedTime;
+
 /**
 
  *
@@ -288,4 +395,4 @@ public class LinearTeleOp extends LinearOpMode {
 
         }
     }
-}
+}**/
