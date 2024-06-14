@@ -121,6 +121,7 @@ import com.qualcomm.robotcore.util.ElapsedTime;
 
  */
 
+/**
 @TeleOp(name="Robot Oriented TeleOpp", group="Linear Opmode")
 public class LinearTeleOp extends LinearOpMode {
 
@@ -137,7 +138,7 @@ public class LinearTeleOp extends LinearOpMode {
     Right bumper - toggle hook servo up or down
     Left joystick y - spin intake wheels
     Right joystick x - actuator motor
-     */
+
 
 
     //ServoImplEx servo;
@@ -395,4 +396,5 @@ public class LinearTeleOp extends LinearOpMode {
 
         }
     }
-}**/
+}
+**/

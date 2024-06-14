@@ -21,28 +21,12 @@ public class FireHardwareMap {
     public DcMotor backLeftMotor = null;
 
     // create slide motors
-    public DcMotor slideLeftMotor = null;
-    public DcMotor slideRightMotor = null;
-    public DcMotor stringMotor = null;
-
-    //create mechanism servos
-    public DcMotor intakeMotor = null;
-    public Servo boxLeftServo = null;
-    public Servo boxRightServo = null;
-    public CRServo doorServo = null;
-//    public Servo separatorServo = null;
-    public CRServo airplaneServo = null;
-//    public Servo hookServo = null;
-
-//    public RevBlinkinLedDriver led = null;
-
+    public DcMotor linearActuatorMotor = null;
+    public CRServo clawServo = null;
     public ColorRangeSensor color = null;
 
     public BNO055IMU imu = null;
 
-    public Servo leftHook = null;
-
-    public Servo rightHook = null;
 public RevBlinkinLedDriver led = null;
 
 
@@ -63,26 +47,11 @@ public RevBlinkinLedDriver led = null;
         frontLeftMotor = HardwareMap.get(DcMotor.class, "frontLeftMotor");
         backRightMotor = HardwareMap.get(DcMotor.class, "backRightMotor");
         backLeftMotor = HardwareMap.get(DcMotor.class, "backLeftMotor");
-        intakeMotor = HardwareMap.get(DcMotor.class, "intakeMotor");
-        stringMotor = HardwareMap.get(DcMotor.class, "stringMotor");
-        slideLeftMotor = HardwareMap.get(DcMotor.class, "slideLeftMotor");
-        slideRightMotor = HardwareMap.get(DcMotor.class, "slideRightMotor");
-       led = HardwareMap.get(RevBlinkinLedDriver.class, "led");
+        linearActuatorMotor = HardwareMap.get(DcMotor.class, "linearActuatorMotor");
+        led = HardwareMap.get(RevBlinkinLedDriver.class, "led");
         color = HardwareMap.get(ColorRangeSensor.class, "color");
         //Making servo
-        boxLeftServo = HardwareMap.get(Servo.class, "leftServo");
-        boxRightServo = HardwareMap.get(Servo.class, "rightServo");
-
-        leftHook = HardwareMap.get(Servo.class, "leftHook");
-        rightHook = HardwareMap.get(Servo.class, "rightHook");
-//        separatorServo = HardwareMap.get(Servo.class, "separatorServo");
-        doorServo = HardwareMap.get(CRServo.class, "doorServo");
-        airplaneServo = HardwareMap.get(CRServo.class, "airplaneServo");
-//        hookServo = HardwareMap.get(Servo.class, "hookServo");
-
-        slideLeftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        slideRightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-
+        clawServo = HardwareMap.get(CRServo.class, "clawServo");
 
         //Set up motor direction
         frontRightMotor.setDirection(DcMotor.Direction.FORWARD);
@@ -92,24 +61,16 @@ public RevBlinkinLedDriver led = null;
         backLeftMotor.setDirection(DcMotor.Direction.REVERSE);
 //        intakeMotor.setDirection(DcMotor.Direction.FORWARD);
 
-        slideLeftMotor.setDirection(DcMotor.Direction.REVERSE);
-        slideRightMotor.setDirection((DcMotor.Direction.FORWARD));
+        linearActuatorMotor.setDirection(DcMotor.Direction.FORWARD);
 
-        stringMotor.setDirection(DcMotor.Direction.FORWARD);
-
-        boxLeftServo.setDirection(Servo.Direction.FORWARD);
-        boxRightServo.setDirection(Servo.Direction.REVERSE);
-//        separatorServo.setDirection(Servo.Direction.FORWARD);
-        airplaneServo.setDirection(CRServo.Direction.REVERSE);
-        doorServo.setDirection(CRServo.Direction.FORWARD);
-//        hookServo.setDirection(Servo.Direction.FORWARD);
+        clawServo.setDirection(CRServo.Direction.FORWARD);
 
         //Set motor mode
         frontRightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         frontLeftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         backRightMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         backLeftMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-//        intakeMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        linearActuatorMotor.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
 
 
@@ -119,31 +80,17 @@ public RevBlinkinLedDriver led = null;
         frontLeftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         backRightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         backLeftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-//        intakeMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        slideRightMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        slideLeftMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        stringMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        linearActuatorMotor.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+
 
         //Set 0 power
         frontRightMotor.setPower(0);
         frontLeftMotor.setPower(0);
         backRightMotor.setPower(0);
         backLeftMotor.setPower(0);
-//        intakeMotor.setPower(0);
-//        actuatorMotor.setPower(0);
+        linearActuatorMotor.setPower(0);
 
-        boxLeftServo.setPosition(Constants.BOXLEFTSERVO_HOMEPOSITION);
-        boxRightServo.setPosition(Constants.BOXRIGHTSERVO_HOMEPOSITION);
-
-
-
-
-        boxLeftServo.setPosition(0.0);
-        boxRightServo.setPosition(0.0);
-//        separatorServo.setPosition(0.5);
-        doorServo.setPower(0.35);
-        airplaneServo.setPower(0.0);
-//        hookServo.setPower(0.0);
+        clawServo.setPower(0.0);
 
 
 
