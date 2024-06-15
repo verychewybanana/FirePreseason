@@ -11,7 +11,6 @@ import com.qualcomm.robotcore.hardware.CRServo;
 import org.firstinspires.ftc.robotcore.external.navigation.Position;
 import org.firstinspires.ftc.robotcore.external.navigation.Velocity;
 import com.qualcomm.robotcore.hardware.ColorRangeSensor;
-import com.qualcomm.hardware.rev.RevBlinkinLedDriver;
 
 public class FireHardwareMap {
     //create drivetrain motors
@@ -26,9 +25,6 @@ public class FireHardwareMap {
     public ColorRangeSensor color = null;
 
     public BNO055IMU imu = null;
-
-public RevBlinkinLedDriver led = null;
-
 
     //Hardware Map object
     com.qualcomm.robotcore.hardware.HardwareMap HardwareMap = null;
@@ -48,14 +44,12 @@ public RevBlinkinLedDriver led = null;
         backRightMotor = HardwareMap.get(DcMotor.class, "backRightMotor");
         backLeftMotor = HardwareMap.get(DcMotor.class, "backLeftMotor");
         linearActuatorMotor = HardwareMap.get(DcMotor.class, "linearActuatorMotor");
-        led = HardwareMap.get(RevBlinkinLedDriver.class, "led");
-        color = HardwareMap.get(ColorRangeSensor.class, "color");
         //Making servo
         clawServo = HardwareMap.get(CRServo.class, "clawServo");
 
         //Set up motor direction
         frontRightMotor.setDirection(DcMotor.Direction.FORWARD);
-        frontLeftMotor.setDirection(DcMotor.Direction.REVERSE);
+        frontLeftMotor.setDirection(DcMotor.Direction.FORWARD);
         backRightMotor.setDirection(DcMotor.Direction.FORWARD);
 //        backRightMotor.setDirection(DcMotor.Direction.REVERSE);
         backLeftMotor.setDirection(DcMotor.Direction.REVERSE);
@@ -88,8 +82,7 @@ public RevBlinkinLedDriver led = null;
         backRightMotor.setPower(0);
         backLeftMotor.setPower(0);
         linearActuatorMotor.setPower(0);
-
-        clawServo.setPower(0.0);
+        clawServo.setPower(0);
 
 
 
