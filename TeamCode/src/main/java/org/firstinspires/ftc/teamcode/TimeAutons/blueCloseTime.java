@@ -13,7 +13,6 @@ import org.firstinspires.ftc.vision.tfod.TfodProcessor;
 import java.util.List;
 
 @Autonomous(name="blueCloseAutonTime", group="TimeAutons")
-@Disabled
 public class blueCloseTime extends LinearOpMode {
     FireHardwareMap robot = null;
 
@@ -34,63 +33,7 @@ public class blueCloseTime extends LinearOpMode {
             robot.backLeftMotor.setPower(0.5);
             robot.backRightMotor.setPower(0.5);
 
-            sleep(1350);
-
-            // stop
-            robot.frontLeftMotor.setPower(0.0);
-            robot.frontRightMotor.setPower(0.0);
-            robot.backLeftMotor.setPower(0.0);
-            robot.backRightMotor.setPower(0.0);
-
-            sleep(200);
-
-//            robot.intakeMotor.setPower(0.0);
-            robot.frontLeftMotor.setPower(-0.5);
-            robot.frontRightMotor.setPower(-0.5);
-            robot.backLeftMotor.setPower(-0.5);
-            robot.backRightMotor.setPower(-0.5);
-
-            sleep(1150);
-
-            // stop
-            robot.frontLeftMotor.setPower(0.0);
-            robot.frontRightMotor.setPower(0.0);
-            robot.backLeftMotor.setPower(0.0);
-            robot.backRightMotor.setPower(0.0);
-
-            sleep(200);
-
-            // both lefts -, both rights +, in order to turn left
-            robot.frontLeftMotor.setPower(-0.5);
-            robot.frontRightMotor.setPower(0.5);
-            robot.backLeftMotor.setPower(-0.5);
-            robot.backRightMotor.setPower(0.5);
-
-            sleep(850);
-
-            // stop
-            robot.frontLeftMotor.setPower(0.0);
-            robot.frontRightMotor.setPower(0.0);
-            robot.backLeftMotor.setPower(0.0);
-            robot.backRightMotor.setPower(0.0);
-
-            sleep(200);
-
-            robot.frontLeftMotor.setPower(0.5);
-            robot.frontRightMotor.setPower(0.5);
-            robot.backLeftMotor.setPower(0.5);
-            robot.backRightMotor.setPower(0.5);
-
-            sleep(1300);
-
-            // stop
-            robot.frontLeftMotor.setPower(0.0);
-            robot.frontRightMotor.setPower(0.0);
-            robot.backLeftMotor.setPower(0.0);
-            robot.backRightMotor.setPower(0.0);
-
-            sleep(200);
-
+            sleep(2100);
         }
 
     }
